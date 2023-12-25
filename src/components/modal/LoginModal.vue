@@ -1,5 +1,25 @@
 <template>
   <Modal ref="modalRef" button-name="Login">
+    <template #header>
+      Login
+      <div class="col col">
+<!--        ErrorAlert-->
+      </div>
+    </template>
+    <template #body>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Username (LoginModal)</span>
+        <input v-model="username" type="text" class="form-control">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Password (LoginModal)</span>
+        <input v-model="password" type="text" class="form-control">
+      </div>
+    </template>
+    <template #footer>
+      <button @keyup.enter="login" @click="login" type="submit" class="btn btn-outline-dark">Login (LoginModal)</button>
+    </template>
+  </Modal>
 </template>
 
 
@@ -9,7 +29,7 @@ import Modal from "@/components/modal/Modal.vue";
 
 export default {
   name: "LoginModal",
-  components: {Modal},  //LoginModal eshe ne napisali
+  components: {Modal},  //ErrorAlert eshe ne napisali
   data() {
     return {
       errorMessage: '',
