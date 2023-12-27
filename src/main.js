@@ -4,4 +4,14 @@ import router from './router'
 import VueAxios from "vue-axios";
 import axios from "axios";
 
-createApp(App).use(router).use(VueAxios, axios).mount('#app')
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.js"
+
+const app = createApp(App)
+
+app.use(router)
+app.use(VueAxios, axios)
+
+
+
+app.mount('#app')

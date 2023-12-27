@@ -1,4 +1,55 @@
 <template>
+  <LoginModal ref="loginModalRef"/>
 
+  <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
+    <div class="">
+      <router-link to="/">
+        <h1>NeighborNest (back to main page)</h1>
+      </router-link>
+    </div>
+
+    <div>
+      <nav class="mt-3">
+        <template v-if="isLoggedIn">
+          <button @click="$router.push('/homepage')">To home page</button>
+        </template>
+        <template v-else>
+          <button @click="openLoginModal">openLoginModal</button>
+        </template>
+      </nav>
+    </div>
+
+  </div>
+  <div id="=app" class="ms-5 me-5">
+    <router-view/>
+  </div>
 </template>
 
+<script>
+import LoginModal from "@/components/modal/LoginModal.vue";
+import router from "@/router";
+
+export default {
+  components: {LoginModal},
+  data() {
+    return {
+      isLoggedIn: false,
+      userId: 0
+    }
+  },
+  methods: {
+    openLoginModal() {
+      this.$refs.loginModalRef.$refs.modalRef.openModal()
+    },
+
+    handleLogin() {
+      this.userId = parseInt(sessionStorage.getItem('userId'));
+      if (this.userId > 0 ) {
+        this.isLoggedIn = true;
+      }
+    },
+
+
+  }
+}
+</script>
