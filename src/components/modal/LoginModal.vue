@@ -54,11 +54,11 @@ export default {
       } this.handleErrorAlert();
     },
 
-    allRequiredFieldsAreFilled: function () {
+    allRequiredFieldsAreFilled() {
       return this.password.length > 0 && this.username.length > 0;
     },
 
-    sendLoginRequest: function () {
+    sendLoginRequest() {
       this.$http.get("/login", {
         params: {
           username: this.username,
@@ -80,7 +80,7 @@ export default {
       })
     },
 
-    handleErrorAlert: function () {
+    handleErrorAlert() {
       this.errorMessage = 'Please fill all fields'
       setTimeout(this.errorMessage = '', 2000)
     },

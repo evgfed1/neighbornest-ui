@@ -15,6 +15,7 @@
         </template>
         <template v-else>
           <button @click="openLoginModal">Login</button>
+          <button @click="openLoginModal">Registration</button>
         </template>
       </nav>
     </div>
