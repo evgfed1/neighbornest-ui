@@ -4,7 +4,7 @@
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
     <div class="">
       <router-link to="/">
-        <h1>NeighborNest (back to main page)</h1>
+        <h1>NeighborNest</h1>
       </router-link>
     </div>
 
@@ -14,7 +14,7 @@
           <button @click="$router.push('/homepage')">To home page</button>
         </template>
         <template v-else>
-          <button @click="openLoginModal">openLoginModal</button>
+          <button @click="openLoginModal">Login</button>
         </template>
       </nav>
     </div>

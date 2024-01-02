@@ -8,11 +8,11 @@
     </template>
     <template #body>
       <div class="input-group mb-3">
-        <span class="input-group-text">Username (LoginModal)</span>
+        <span class="input-group-text">Username</span>
         <input v-model="username" type="text" class="form-control">
       </div>
       <div class="input-group mb-3">
-        <span class="input-group-text">Password (LoginModal)</span>
+        <span class="input-group-text">Password</span>
         <input v-model="password" type="text" class="form-control">
       </div>
     </template>
