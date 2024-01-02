@@ -17,7 +17,7 @@
       </div>
     </template>
     <template #footer>
-      <button @keyup.enter="login" @click="login" type="submit" class="btn btn-outline-dark">Login (LoginModal)</button>
+      <button @keyup.enter="login" @click="login" type="submit" class="btn btn-outline-dark">Login</button>
     </template>
   </Modal>
 </template>
