@@ -74,26 +74,44 @@ export default {
      registerNewUser() {
        if (this.allRequiredFieldsAreFilled()) {
          this.sendValidationRequest();
+         this.sendRegisterNewUserRequest();
        } else {
          this.handleErrorAlert();
        }
     },
 
     allRequiredFieldsAreFilled() {
-      return this.password.length > 0
-          && this.firstName.length > 0
-          && this.lastName.length > 0
-          && this.email.length > 0
-          && this.phone.length > 0
-          && this.dateOfBirth.length > 0
-          && this.username.length > 0;
+      return this.userInfo.password.length > 0
+          && this.userInfo.firstName.length > 0
+          && this.userInfo.lastName.length > 0
+          && this.userInfo.email.length > 0
+          && this.userInfo.phone.length > 0
+          && this.userInfo.dateOfBirth.length > 0
+          && this.userInfo.username.length > 0;
     },
 
     sendValidationRequest() {
-       alert('Validation process started: IF(userData does not exist)')
-       alert('True: method: sendRegisterNewUserRequest()')
-       alert('False: return errorMessage(same userData is exist)')
+        this.$http.get("/registration/user", {
+          params: {
+            username: this.userInfo.username,
+            phone: this.userInfo.phone,
+            email: this.userInfo.email
+          }
+        })
+            .then(response => {
+              this.validationResponse = response.data
+              sessionStorage.setItem('username', this.validationResponse.username)
+              sessionStorage.setItem('phone', this.validationResponse.phone)
+              sessionStorage.setItem('email', this.validationResponse.email)
+
+            })
+            .catch(error => {
+              const errorResponseBody = error.response.data
+            })
     },
+       // alert('Validation process started: IF(userData does not exist)')
+       // alert('True: method: sendRegisterNewUserRequest()')
+       // alert('False: return errorMessage(same userData is exist)')
 
     sendRegisterNewUserRequest() {
        this.$http.post("/registration/user", this.userInfo
