@@ -12,6 +12,10 @@
     <div>
       <nav class="mt-3">
         <template v-if="isLoggedIn">
+          <div>
+            <a href="www.google.com">Это гиперссылка</a>
+<!--            <button></button>-->
+          </div>
           <button @click="$router.push('/homepage')">To home page</button>
         </template>
         <template v-else>
