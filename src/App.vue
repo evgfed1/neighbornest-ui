@@ -1,20 +1,17 @@
 <template>
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
   <RegistrationModal ref="registrationModalRef"/>
-
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
     <div class="">
       <router-link to="/">
         <h1>NeighborNest</h1>
       </router-link>
     </div>
-
     <div>
       <nav class="mt-3">
         <template v-if="isLoggedIn">
-          <div>
-            <a href="www.google.com">Это гиперссылка</a>
-<!--            <button></button>-->
+          <div class="justify-content-center">
+            <h3>Welcome, Anton!</h3>
           </div>
           <button @click="$router.push('/homepage')">To home page</button>
         </template>

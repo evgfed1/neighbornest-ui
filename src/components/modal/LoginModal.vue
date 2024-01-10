@@ -1,35 +1,44 @@
 <template>
-  <Modal ref="modalRef" button-name="Login">
-    <template #header>
-      Login
-      <div class="col col">
-<!--        ErrorAlert-->
-      </div>
-    </template>
-    <template #body>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Username</span>
-        <input v-model="username" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Password</span>
-        <input v-model="password" type="text" class="form-control">
-      </div>
-    </template>
-    <template #footer>
-      <button @keyup.enter="login" @click="login" type="submit" class="btn btn-outline-dark">Login</button>
-    </template>
-  </Modal>
+  <div @keydown.enter="login">
+    <Modal ref="modalRef" button-name="Login">
+      <template #header>
+        <div class="d-flex justify-content-between">
+          <div>
+            Login
+          </div>
+          <div class="ms-5">
+            <ErrorAlert :error-message="errorMessage"/>
+          </div>
+        </div>
+      </template>
+      <template #body>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Username</span>
+          <input v-model="username" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Password</span>
+          <input v-model="password" type="text" class="form-control">
+        </div>
+      </template>
+      <template #footer>
+        <button @click="login" type="submit" class="btn btn-outline-dark">Login</button>
+      </template>
+    </Modal>
+  </div>
 </template>
 
 
 <script>
 
 import Modal from "@/components/modal/Modal.vue";
+import ErrorAlert from "@/components/modal/ErrorAlert.vue";
 
 export default {
+
   name: "LoginModal",
-  components: {Modal},  //ErrorAlert eshe ne napisali
+  components: {Modal, ErrorAlert},
+
   data() {
     return {
       errorMessage: '',
@@ -51,7 +60,9 @@ export default {
     login() {
       if (this.allRequiredFieldsAreFilled()) {
         this.sendLoginRequest();
-      } this.handleErrorAlert();
+      } else {
+        this.handleErrorAlert()
+      }
     },
 
     allRequiredFieldsAreFilled() {
@@ -81,9 +92,11 @@ export default {
     },
 
     handleErrorAlert() {
-      this.errorMessage = 'Please fill all fields'
-      setTimeout(this.errorMessage = '', 2000)
-    },
+      this.errorMessage = 'Please fill all fields';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 2000);
+    }
 
   }
 }
