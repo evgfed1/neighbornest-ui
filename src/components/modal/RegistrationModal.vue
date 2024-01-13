@@ -1,9 +1,13 @@
 <template>
   <Modal ref="modalRef" button-name="Register">
     <template #header>
-      Registration
-      <div class="col col">
-        <!--        ErrorAlert-->
+      <div class="d-flex justify-content-between">
+        <div>
+          Registration
+        </div>
+        <div class="ms-5">
+          <ErrorAlert :error-message="errorMessage"/>
+        </div>
       </div>
     </template>
     <template #body>
@@ -48,10 +52,11 @@
 import Modal from "@/components/modal/Modal.vue";
 import VueFlatpickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
+import ErrorAlert from "@/components/modal/ErrorAlert.vue";
 
 export default {
   name: "RegistrationModal",
-  components: {Modal, VueFlatpickr},
+  components: {ErrorAlert, Modal, VueFlatpickr},
   data() {
     return {
       userInfo: {
@@ -103,7 +108,9 @@ export default {
 
     handleErrorAlert() {
       this.errorMessage = 'Please fill all fields'
-      setTimeout(this.errorMessage = '', 2000)
+      setTimeout(() => {
+        this.errorMessage = '';
+        }, 2000)
     },
   }
 }
