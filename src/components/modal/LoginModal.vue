@@ -38,7 +38,6 @@ export default {
 
   name: "LoginModal",
   components: {Modal, ErrorAlert},
-
   data() {
     return {
       errorMessage: '',
@@ -54,7 +53,6 @@ export default {
         message: '',
         errorCode: 0,
       }
-
     }
   },
   methods: {
@@ -101,7 +99,6 @@ export default {
         this.errorMessage = '';
       }, 2000);
     }
-
   }
 }
 </script>

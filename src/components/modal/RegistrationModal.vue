@@ -94,10 +94,8 @@ export default {
           && this.userInfo.userUsername.length > 0;
     },
 
-
-
     sendRegisterNewUserRequest() {
-      this.$http.post("/user/registration/", this.userInfo
+      this.$http.post("/user/registration", this.userInfo
       ).then(response => {
         this.$refs.modalRef.closeModal()
       })

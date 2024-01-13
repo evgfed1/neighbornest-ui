@@ -1,22 +1,17 @@
 <template>
+
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef"/>
 
-
-
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
-
     <div class="">
       <router-link to="/">
         <h1 class="display-5">NeighborNest</h1>
       </router-link>
     </div>
-
     <div>
-
       <nav class="mt-3">
-
         <template v-if="isLoggedIn">
           <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">To home page
           </button>
@@ -25,17 +20,13 @@
             <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
           </div>
         </template>
-
         <template v-else>
           <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-1">Login</button>
           <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark ms-1 me-1">Registration
           </button>
         </template>
-
       </nav>
-
     </div>
-
   </div>
   <div id="=app" class="ms-5 me-5">
     <router-view/>
@@ -85,10 +76,7 @@ export default {
       this.isLoggedIn = userId !== null;
       router.push('/')
     }
-
-
   }
 }
-
 
 </script>
