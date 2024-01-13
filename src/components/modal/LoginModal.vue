@@ -46,7 +46,9 @@ export default {
       password: '',
       loginResponse: {
         userId: 0,
-        roleName: ''
+        roleName: '',
+        firstName: '',
+        lastName: '',
       },
       errorResponse: {
         message: '',
@@ -79,6 +81,8 @@ export default {
         this.loginResponse = response.data
         sessionStorage.setItem('userId', this.loginResponse.userId)
         sessionStorage.setItem('roleName', this.loginResponse.roleName)
+        sessionStorage.setItem('firstName', this.loginResponse.firstName)
+        sessionStorage.setItem('lastName', this.loginResponse.lastName)
         this.$refs.modalRef.closeModal()
         this.$emit('event-login-success')
       }).catch(error => {

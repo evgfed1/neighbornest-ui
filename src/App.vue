@@ -11,7 +11,7 @@
       <nav class="mt-3">
         <template v-if="isLoggedIn">
           <div class="justify-content-center">
-            <h3>Welcome, Anton!</h3>
+            <h3>Welcome, {{ firstName }} {{ lastName }}</h3>
           </div>
           <button @click="$router.push('/homepage')">To home page</button>
         </template>
@@ -31,7 +31,6 @@
 <script>
 
 import LoginModal from "@/components/modal/LoginModal.vue";
-import router from "@/router";
 import RegistrationModal from "@/components/modal/RegistrationModal.vue";
 
 export default {
@@ -39,7 +38,9 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      userId: 0
+      userId: 0,
+      firstName: '',
+      lastName: '',
     }
   },
   methods: {
@@ -53,17 +54,16 @@ export default {
 
     handleLogin() {
       this.userId = parseInt(sessionStorage.getItem('userId'));
-      if (this.userId > 0 ) {
+      if (this.userId > 0) {
         this.isLoggedIn = true;
+        this.firstName = String(sessionStorage.getItem("firstName"))
+        this.lastName = String(sessionStorage.getItem("lastName"))
       }
     },
 
 
-
-
   }
 }
-
 
 
 </script>
