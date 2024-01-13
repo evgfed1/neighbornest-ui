@@ -94,25 +94,7 @@ export default {
           && this.userInfo.userUsername.length > 0;
     },
 
-    sendValidationRequest() {
-      this.$http.get("/user/registration/", {
-        params: {
-          username: this.userInfo.userUsername,
-          phone: this.userInfo.phone,
-          email: this.userInfo.email
-        }
-      })
-          .then(response => {
-            this.validationResponse = response.data
-            sessionStorage.setItem('username', this.validationResponse.username)
-            sessionStorage.setItem('phone', this.validationResponse.phone)
-            sessionStorage.setItem('email', this.validationResponse.email)
 
-          })
-          .catch(error => {
-            const errorResponseBody = error.response.data
-          })
-    },
 
     sendRegisterNewUserRequest() {
       this.$http.post("/user/registration/", this.userInfo
