@@ -78,7 +78,6 @@ export default {
   methods: {
     registerNewUser() {
       if (this.allRequiredFieldsAreFilled()) {
-        // this.sendValidationRequest();
         this.sendRegisterNewUserRequest();
       } else {
         this.handleErrorAlert();
@@ -96,7 +95,7 @@ export default {
     },
 
     sendValidationRequest() {
-      this.$http.get("/registration/user", {
+      this.$http.get("/user/registration/", {
         params: {
           username: this.userInfo.userUsername,
           phone: this.userInfo.phone,
@@ -116,7 +115,7 @@ export default {
     },
 
     sendRegisterNewUserRequest() {
-      this.$http.post("/registration/user", this.userInfo
+      this.$http.post("/user/registration/", this.userInfo
       ).then(response => {
         this.$refs.modalRef.closeModal()
       })
