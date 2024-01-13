@@ -1,25 +1,39 @@
 <template>
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
+  <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef"/>
+
+
+
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
+
     <div class="">
       <router-link to="/">
-        <h1>NeighborNest</h1>
+        <h1 class="display-5">NeighborNest</h1>
       </router-link>
     </div>
+
     <div>
+
       <nav class="mt-3">
+
         <template v-if="isLoggedIn">
-          <div class="justify-content-center">
-            <h3>Welcome, {{ firstName }} {{ lastName }}</h3>
+          <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">To home page
+          </button>
+          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Logout</button>
+          <div class="d-flex justify-content-center align-items-center">
+            <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
           </div>
-          <button @click="$router.push('/homepage')">To home page</button>
         </template>
+
         <template v-else>
-          <button @click="openLoginModal">Login</button>
-          <button @click="openRegisterNewUserModal">Registration</button>
+          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-1">Login</button>
+          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark ms-1 me-1">Registration
+          </button>
         </template>
+
       </nav>
+
     </div>
 
   </div>
@@ -32,9 +46,11 @@
 
 import LoginModal from "@/components/modal/LoginModal.vue";
 import RegistrationModal from "@/components/modal/RegistrationModal.vue";
+import router from "@/router";
+import LogOutModal from "@/components/modal/LogOutModal.vue";
 
 export default {
-  components: {RegistrationModal, LoginModal},
+  components: {LogOutModal, RegistrationModal, LoginModal},
   data() {
     return {
       isLoggedIn: false,
@@ -60,6 +76,15 @@ export default {
         this.lastName = String(sessionStorage.getItem("lastName"))
       }
     },
+    openLogoutModal() {
+      this.$refs.logOutModal.$refs.modalRef.openModal()
+    },
+    handleLogout() {
+      sessionStorage.clear();
+      const userId = sessionStorage.getItem('userId');
+      this.isLoggedIn = userId !== null;
+      router.push('/')
+    }
 
 
   }

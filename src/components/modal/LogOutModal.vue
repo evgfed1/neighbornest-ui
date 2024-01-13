@@ -8,13 +8,13 @@
     </template>
     <template #footer>
       <button @click="executeLogout" class="btn btn-outline-dark" type="submit">yes</button>
-      <button @click="closeLogoutModal" class="btn btn-outline-dark"> what is this button?</button>
+      <button @click="closeLogoutModal" class="btn btn-outline-dark">no</button>
     </template>
   </Modal>
 
 </template>
 
-<script setup>
+<script>
 
 import Modal from "@/components/modal/Modal.vue";
 
