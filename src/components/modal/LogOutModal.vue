@@ -1,0 +1,37 @@
+<template>
+  <Modal ref="modalRef" close-button-name="No">
+    <template #header>
+      Logout
+    </template>
+    <template #body>
+      Are you sure?
+    </template>
+    <template #footer>
+      <button @click="executeLogout" class="btn btn-outline-dark" type="submit">yes</button>
+      <button @click="closeLogoutModal" class="btn btn-outline-dark"> what is this button?</button>
+    </template>
+  </Modal>
+
+</template>
+
+<script setup>
+
+import Modal from "@/components/modal/Modal.vue";
+
+export default {
+  name: 'LogOutModal',
+  components: {Modal},
+  methods: {
+    executeLogout() {
+      this.$emit('event-execute-logout')
+      this.$refs.modalRef.closeModal()
+    },
+    closeLogoutModal() {
+      this.$refs.modalRef.closeModal()
+    },
+  }
+}
+</script>
+
+
+
