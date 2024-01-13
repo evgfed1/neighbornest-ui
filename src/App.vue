@@ -15,7 +15,7 @@
         <template v-if="isLoggedIn">
           <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">To home page
           </button>
-          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Logout</button>
+          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
           <div class="d-flex justify-content-center align-items-center">
             <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
           </div>

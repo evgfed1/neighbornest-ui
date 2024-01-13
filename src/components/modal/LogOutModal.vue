@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef" close-button-name="No">
     <template #header>
-      Logout
+      Log out
     </template>
     <template #body>
       Are you sure?
