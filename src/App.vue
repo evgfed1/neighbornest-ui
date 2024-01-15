@@ -8,12 +8,16 @@
     <div class="">
       <router-link to="/">
         <h1 class="display-5">NeighborNest</h1>
+        <div class="justify-content-center">
+          <img class="ms-5" src="/apple-touch-icon.png" />
+        </div>
       </router-link>
     </div>
     <div>
       <nav class="mt-3">
         <template v-if="isLoggedIn">
-          <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">To home page
+          <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">
+            Registration Association
           </button>
           <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
           <div class="d-flex justify-content-center align-items-center">
