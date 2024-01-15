@@ -5,18 +5,12 @@
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
 
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
-    <div class="">
-      <router-link to="/">
-        <h1 class="display-5">NeighborNest</h1>
-        <div class="justify-content-center">
-          <img class="ms-5" src="/apple-touch-icon.png" />
-        </div>
-      </router-link>
-    </div>
+
     <div>
       <nav class="mt-3">
+        <router-link to="/homepage" class="me-3">Home page</router-link>
         <template v-if="isLoggedIn">
-          <button @click="$router.push('/homepage')" type="button" class="btn btn-outline-dark ms-1 me-1">
+          <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
             Registration Association
           </button>
           <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>

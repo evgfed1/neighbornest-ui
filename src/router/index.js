@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ErrorView from "@/views/ErrorView.vue";
+import RegistrationAssociationView from "@/views/RegistrationAssociationView.vue";
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     name: 'errorRoute',
     component: ErrorView
   },
+  {
+    path: '/registration',
+    name: 'registrationRoute',
+    component: RegistrationAssociationView
+  }
 ]
 
 const router = createRouter({
