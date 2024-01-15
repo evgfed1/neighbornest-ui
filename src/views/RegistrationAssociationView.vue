@@ -1,77 +1,127 @@
 <template>
   <div>
     <div class="container">
+
       <div class="row justify-content-center">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-          <h3>Registration Association Form</h3>
-        </div>
 
-        <!-- Имя -->
-        <div class="col-4 mb-3">
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text">Eesnimi</span>
-            <input v-model="firstName" type="text" class="form-control">
+        <div class="col col-4 justify-content-center">
+
+          <div class=" d-flex align-items-center justify-content-center mb-4">
+            <h3>Registration Association Form</h3>
           </div>
-        </div>
 
-        <!-- Фамилия -->
-        <div class="col-12 mb-3">
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text">Perekonnanimi</span>
-            <input v-model="lastName" type="text" class="form-control">
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Association name</span>
+              <input v-model="associationInfo.name" type="text" class="form-control">
+            </div>
           </div>
-        </div>
 
-        <!-- E-mail -->
-        <div class="col-12 mb-3">
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text">E-maili aadress</span>
-            <input v-model="email" type="text" class="form-control">
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Phone</span>
+              <input v-model="associationInfo.phone" type="text" class="form-control">
+            </div>
           </div>
-        </div>
 
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Email</span>
+              <input v-model="associationInfo.email" type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Reg number</span>
+              <input v-model="associationInfo.regNumber" type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Date of build</span>
+              <input v-model="associationInfo.buildingDateOfBuild" type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Cadastral</span>
+              <input v-model="associationInfo.buildingCadastral" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Floors</span>
+              <input v-model="associationInfo.buildingFloors" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Lift</span>
+              <input v-model="associationInfo.buildingLift" type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Address</span>
+              <input v-model="associationInfo.buildingAddress" type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text">Post index</span>
+              <input v-model="associationInfo.buildingPostIndex" type="text" class="form-control">
+            </div>
+          </div>
+
+
+        </div>
       </div>
+
     </div>
   </div>
 </template>
 
 
-
-
-
-
 <script>
 import 'flatpickr/dist/flatpickr.css';
-import VueFlatpickr from "vue-flatpickr-component";
-import ErrorAlert from "@/components/modal/ErrorAlert.vue";
 
 export default {
-  name: "RegistrationAssociationView"}
-  // components: {ErrorAlert, VueFlatpickr}
-//   data() {
-//     return {
-//       associationInfo: {
-//         buildingDateOfBuild: '',
-//         buildingCadastral: '',
-//         buildingFloors: '',
-//         buildingLift: null,
-//         buildingAddress: '',
-//         buildingPostIndex: '',
-//         name: '',
-//         phone: '',
-//         email: '',
-//         regNumber: '',
-//       },
-//       errorMessage: '',
-//       errorResponse: {
-//         message: '',
-//         errorCode: 0,
-//       },
-//       validationResponse: {
-//         regNumber: ''
-//       },
-//     }
-//   },
+  name: "RegistrationAssociationView",
+
+  // components: {ErrorAlert, VueFlatpickr},
+  data() {
+    return {
+      associationInfo: {
+        buildingDateOfBuild: '',
+        buildingCadastral: '',
+        buildingFloors: '',
+        buildingLift: null,
+        buildingAddress: '',
+        buildingPostIndex: '',
+        name: '',
+        phone: '',
+        email: '',
+        regNumber: '',
+      },
+      errorMessage: '',
+      errorResponse: {
+        message: '',
+        errorCode: 0,
+      },
+      validationResponse: {
+        regNumber: ''
+      },
+    }
+  },
+}
+
+
 //   methods: {
 //     registerNewAssociation() {
 //       if (this.allRequiredFieldsAreFilled()) {
