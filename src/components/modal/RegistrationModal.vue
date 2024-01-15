@@ -1,51 +1,53 @@
 <template>
-  <Modal ref="modalRef" button-name="Register">
-    <template #header>
-      <div class="d-flex justify-content-between">
-        <div>
-          Registration
+  <div @keydown.enter="registerNewUser">
+    <Modal ref="modalRef" button-name="Register">
+      <template #header>
+        <div class="d-flex justify-content-between">
+          <div>
+            Registration
+          </div>
+          <div class="ms-5">
+            <ErrorAlert :error-message="errorMessage"/>
+          </div>
         </div>
-        <div class="ms-5">
-          <ErrorAlert :error-message="errorMessage"/>
+      </template>
+      <template #body>
+        <div class="input-group mb-3">
+          <span class="input-group-text">First name</span>
+          <input v-model="userInfo.firstName" type="text" class="form-control">
         </div>
-      </div>
-    </template>
-    <template #body>
-      <div class="input-group mb-3">
-        <span class="input-group-text">First name</span>
-        <input v-model="userInfo.firstName" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Last name</span>
-        <input v-model="userInfo.lastName" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Email</span>
-        <input v-model="userInfo.email" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Phone</span>
-        <input v-model="userInfo.phone" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Date of birth</span>
-        <vue-flatpickr v-model="userInfo.birthdate" class="form-control"></vue-flatpickr>
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Username</span>
-        <input v-model="userInfo.userUsername" type="text" class="form-control">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">Password</span>
-        <input v-model="userInfo.userPassword" type="text" class="form-control">
-      </div>
-    </template>
-    <template #footer>
-      <button @keyup.enter="registerNewUser" @click="registerNewUser" type="submit" class="btn btn-outline-dark">
-        Register
-      </button>
-    </template>
-  </Modal>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Last name</span>
+          <input v-model="userInfo.lastName" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Email</span>
+          <input v-model="userInfo.email" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Phone</span>
+          <input v-model="userInfo.phone" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Date of birth</span>
+          <vue-flatpickr v-model="userInfo.birthdate" class="form-control"></vue-flatpickr>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Username</span>
+          <input v-model="userInfo.userUsername" type="text" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Password</span>
+          <input v-model="userInfo.userPassword" type="text" class="form-control">
+        </div>
+      </template>
+      <template #footer>
+        <button @keyup.enter="registerNewUser" @click="registerNewUser" type="submit" class="btn btn-outline-dark">
+          Register
+        </button>
+      </template>
+    </Modal>
+  </div>
 </template>
 
 <script>
@@ -124,7 +126,7 @@ export default {
       this.errorMessage = 'Please fill all fields'
       setTimeout(() => {
         this.errorMessage = '';
-        }, 2000)
+      }, 2000)
     },
   }
 }
