@@ -77,7 +77,13 @@ export default {
         username: '',
         email: '',
         phone: ''
-      }
+      },
+      registerResponse: {
+        userId: 0,
+        roleName: '',
+        firstName: '',
+        lastName: '',
+      },
     }
   },
   methods: {
@@ -102,8 +108,16 @@ export default {
     sendRegisterNewUserRequest() {
       this.$http.post("/user/registration", this.userInfo
       ).then(response => {
+        this.registerResponse = response.data
+        sessionStorage.setItem('userId', this.registerResponse.userId)
+        sessionStorage.setItem('roleName', this.registerResponse.roleName)
+        sessionStorage.setItem('firstName', this.registerResponse.firstName)
+        sessionStorage.setItem('lastName', this.registerResponse.lastName)
         this.$refs.modalRef.closeModal()
+        this.$emit('event-registration-success')
       })
+
+
     },
 
     handleErrorAlert() {

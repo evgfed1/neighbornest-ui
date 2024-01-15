@@ -2,7 +2,7 @@
 
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
-  <RegistrationModal ref="registrationModalRef"/>
+  <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
 
   <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
     <div class="">
@@ -20,6 +20,9 @@
             <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
           </div>
         </template>
+
+
+
         <template v-else>
           <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-1">Login</button>
           <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark ms-1 me-1">Registration
@@ -75,7 +78,16 @@ export default {
       const userId = sessionStorage.getItem('userId');
       this.isLoggedIn = userId !== null;
       router.push('/')
-    }
+    },
+    handleRegistration() {
+
+      this.userId = parseInt(sessionStorage.getItem('userId'));
+      if (this.userId > 0) {
+        this.isLoggedIn = true;
+        this.firstName = String(sessionStorage.getItem("firstName"))
+        this.lastName = String(sessionStorage.getItem("lastName"))
+      }
+    },
   }
 }
 
