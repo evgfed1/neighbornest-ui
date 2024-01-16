@@ -5,7 +5,7 @@ import RegistrationAssociationView from "@/views/RegistrationAssociationView.vue
 
 const routes = [
   {
-    path: '/',
+    path: '/homepage',
     name: 'home',
     component: HomeView
   },

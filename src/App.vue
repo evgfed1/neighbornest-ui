@@ -4,35 +4,95 @@
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
 
-  <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
 
-    <div>
-      <nav class="mt-3">
-        <router-link to="/homepage" class="me-3">Home page</router-link>
-        <template v-if="isLoggedIn">
+  <div class="container-fluid">
+
+    <div class="row">
+
+
+      <div class="col-12 text-center">
+        TEST 1
+        EMPTY SPACE
+
+
+      </div>
+
+      <div class="col-4">
+        <div>
+          <router-link to="/">
+            <h3>NeighborNest</h3>
+          </router-link>
+          <div v-if="isLoggedIn">
+            <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 container-fluid text-center">
+        TEST 3
+        <div v-if="isLoggedIn" class="row">
+          <div class="col-4">
+            News
+          </div>
+          <div class="col-4">
+            My consumption
+          </div>
+          <div class="col-4">
+            Conversation
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-end">
+        TEST 4
+        <div v-if="isLoggedIn">
           <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
             Registration Association
           </button>
           <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
-          <div class="d-flex justify-content-center align-items-center">
-            <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
-          </div>
-        </template>
+        </div>
 
-
-
-        <template v-else>
-          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-1">Login</button>
-          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark ms-1 me-1">Registration
+        <div v-else>
+          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2">Login</button>
+          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
+            Registration
           </button>
-        </template>
-      </nav>
+        </div>
+      </div>
+
+      <div class="col text-center">
+        TEST 5
+        <div v-if="!isLoggedIn">Pricelist</div>
+      </div>
+
+      <div class="col text-center">
+        TEST 6
+        <div v-if="!isLoggedIn">About</div>
+      </div>
+
+      <div class="col text-center">
+        TEST 7
+        <div v-if="!isLoggedIn"> Contacts</div>
+        <div v-if="isLoggedIn">
+          <router-link to="/homepage" class="me-3">Homepage TEST 2</router-link>
+        </div>
+      </div>
+
+      <div v-if="isLoggedIn" id="=app" class="ms-5 me-5">
+        APP 1
+        <router-view/>
+      </div>
+
+
     </div>
   </div>
-  <div id="=app" class="ms-5 me-5">
-    <router-view/>
-  </div>
+
+
 </template>
+
+<style>
+
+</style>
 
 <script>
 
@@ -66,6 +126,7 @@ export default {
         this.isLoggedIn = true;
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
+        router.push('/')
       }
     },
     openLogoutModal() {
