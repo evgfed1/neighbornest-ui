@@ -30,15 +30,31 @@
 
       <div class="col-4 container-fluid text-center">
         TEST 3
+        <div v-if="!isLoggedIn" class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Price</button>
+
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">About</button>
+
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Contact</button>
+
+          </div>
+        </div>
         <div v-if="isLoggedIn" class="row">
           <div class="col-4">
-            News
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
           </div>
           <div class="col-4">
-            My consumption
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
+
           </div>
           <div class="col-4">
-            Conversation
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
+
           </div>
         </div>
       </div>
@@ -62,24 +78,21 @@
 
       <div class="col text-center">
         TEST 5
-        <div v-if="!isLoggedIn">Pricelist</div>
       </div>
 
       <div class="col text-center">
         TEST 6
-        <div v-if="!isLoggedIn">About</div>
       </div>
 
       <div class="col text-center">
         TEST 7
-        <div v-if="!isLoggedIn"> Contacts</div>
         <div v-if="isLoggedIn">
           <router-link to="/homepage" class="me-3">Homepage TEST 2</router-link>
         </div>
       </div>
 
-      <div v-if="isLoggedIn" id="=app" class="ms-5 me-5">
-        APP 1
+      <div v-if="isLoggedIn" id="=app" class="container-fluid text-center">
+        APP:
         <router-view/>
       </div>
 
@@ -90,9 +103,13 @@
 
 </template>
 
-<style>
 
+
+<style>
 </style>
+
+
+
 
 <script>
 
@@ -126,7 +143,7 @@ export default {
         this.isLoggedIn = true;
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
-        router.push('/')
+        router.push('/homepage')
       }
     },
     openLogoutModal() {
