@@ -14,7 +14,6 @@
         TEST 1
         EMPTY SPACE
 
-
       </div>
 
       <div class="col-4">
@@ -24,6 +23,9 @@
           </router-link>
           <div v-if="isLoggedIn">
             <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
+          </div>
+          <div v-if="isLoggedIn">
+            <router-link to="/homepage" class="me-3">Homepage</router-link>
           </div>
         </div>
       </div>
@@ -46,14 +48,14 @@
         </div>
         <div v-if="isLoggedIn" class="row">
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
+            <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
           </div>
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
+            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
 
           </div>
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
+            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
 
           </div>
         </div>
@@ -86,9 +88,6 @@
 
       <div class="col text-center">
         TEST 7
-        <div v-if="isLoggedIn">
-          <router-link to="/homepage" class="me-3">Homepage TEST 2</router-link>
-        </div>
       </div>
 
       <div v-if="isLoggedIn" id="=app" class="container-fluid text-center">
