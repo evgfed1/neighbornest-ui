@@ -81,12 +81,9 @@ export default {
   name: "ConsumptionView",
   components: {VueFlatpickr},
 
-
   data() {
     return {
-
       userId: '',
-
       consumptionInfo: {
         hotWater: 225.984,
         coldWater: 357.12,
@@ -103,6 +100,6 @@ export default {
         dateFormat: 'YYYY-MM',
       },
     }
-  },
+  }
 }
 </script>
