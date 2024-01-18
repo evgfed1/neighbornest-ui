@@ -23,17 +23,22 @@
       <div class="col-4">
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">From:</span>
               <vue-flatpickr v-model="consumptionInfo.date" class="form-control"></vue-flatpickr>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">To:</span>
               <vue-flatpickr v-model="consumptionInfo.date" class="form-control"></vue-flatpickr>
             </div>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-outline-dark">
+              Show
+            </button>
           </div>
         </div>
 
@@ -97,7 +102,7 @@ export default {
       },
       errorMessage: '',
       flatpickrConfig: {
-        dateFormat: 'YYYY-MM',
+        dateFormat: 'Y-m',
       },
     }
   }
