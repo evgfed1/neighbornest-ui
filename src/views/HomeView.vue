@@ -5,7 +5,7 @@
       <div class="col-4">
 
       </div>
-      <div class="col-4">
+      <div class="col-4 text-center">
 
         <h2 class="display-5">Welcome to </h2>
         <h1 class="display-5">NeighborNest</h1>

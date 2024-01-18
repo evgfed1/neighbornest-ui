@@ -18,14 +18,14 @@
 
       <div class="col-4">
         <div>
-          <router-link to="/">
+          <router-link to="/homepage">
             <h3>NeighborNest</h3>
           </router-link>
           <div v-if="isLoggedIn">
             <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
           </div>
-          <div v-if="isLoggedIn">
-            <router-link to="/homepage" class="me-3">Homepage</router-link>
+          <div>
+            TEST 2
           </div>
         </div>
       </div>
