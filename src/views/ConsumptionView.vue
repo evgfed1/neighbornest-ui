@@ -1,42 +1,108 @@
 <template>
 
-  <h1>Consumption info</h1>
+  <div class="row mt-3 mb-3 text-center">
+    <h1>Consumption info</h1>
+  </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid text-center">
     <div class="row">
+
+
       <div class="col-4">
-        <h5>Consumption text 1</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda consectetur, dolore id
-          perferendis quaerat quisquam reiciendis similique! Ab accusamus architecto consectetur deserunt distinctio id
-          libero magni neque, nostrum perspiciatis possimus, quae, quam quos similique sint temporibus totam vel veniam
-          vero voluptatum! At eaque eligendi expedita facere hic impedit ipsum saepe, tempore totam veritatis vitae!
+        <div class="row">
+          <div class="col-6">
+            <h4>Some data</h4>
+          </div>
+          <div class="col-6">
+            <h4>Some data</h4>
+          </div>
         </div>
       </div>
 
+
       <div class="col-4">
-        <h5>Consumption text 2</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis est necessitatibus quis similique.
-          Dolore doloribus eum ex iusto molestiae numquam optio perferendis quae quas sapiente ullam, voluptatem.
-          Consequatur debitis deserunt eveniet perferendis repellat?
+
+        <div class="row">
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">From:</span>
+              <vue-flatpickr v-model="consumptionInfo.date" class="form-control"></vue-flatpickr>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text">To:</span>
+              <vue-flatpickr v-model="consumptionInfo.date" class="form-control"></vue-flatpickr>
+            </div>
+          </div>
         </div>
+
+        <table class="table table-bordered mt-3">
+          <thead>
+          <tr>
+            <th scope="col">Period</th>
+            <th scope="col">Hot water</th>
+            <th scope="col">Cold water</th>
+            <th scope="col">Electricity</th>
+            <th scope="col">Gas</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{{ consumptionInfo.date }}</th>
+            <td>{{ consumptionInfo.hotWater }}</td>
+            <td>{{ consumptionInfo.coldWater }}</td>
+            <td>{{ consumptionInfo.electricity }}</td>
+            <td>{{ consumptionInfo.gas }}</td>
+          </tr>
+          </tbody>
+        </table>
+
       </div>
 
       <div class="col-4">
+
         <h5>Consumption text 3</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dolores fuga laborum libero nam numquam
-          odio officia optio vero voluptatem. Aspernatur ducimus illo quis rem repellat!
+        <div>Create function for adding consumption
         </div>
+
       </div>
+
     </div>
   </div>
 
 </template>
 
 <script>
+import VueFlatpickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
+
 export default {
-  name: "ConsumptionView"
+  name: "ConsumptionView",
+  components: {VueFlatpickr},
+
+
+  data() {
+    return {
+
+      userId: '',
+
+      consumptionInfo: {
+        hotWater: 225.984,
+        coldWater: 357.12,
+        electricity: 51.897,
+        gas: 34.497,
+        date: null,
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
+      },
+      errorMessage: '',
+      flatpickrConfig: {
+        dateFormat: 'YYYY-MM',
+      },
+    }
+  },
 }
 </script>
-
-
-

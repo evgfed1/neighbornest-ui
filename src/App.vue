@@ -11,8 +11,8 @@
 
 
       <div class="col-12 text-center">
-        TEST 1
-        EMPTY SPACE
+        <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
+
 
       </div>
 
@@ -90,7 +90,7 @@
         TEST 7
       </div>
 
-      <div v-if="isLoggedIn" id="=app" class="container-fluid text-center">
+      <div v-if="isLoggedIn" id="=app" class="container-fluid">
         APP:
         <router-view/>
       </div>
@@ -105,6 +105,10 @@
 
 
 <style>
+.stretched-image {
+  width: 100%;
+  height: auto;
+}
 </style>
 
 
