@@ -54,7 +54,7 @@
 import Modal from "@/components/modal/Modal.vue";
 import VueFlatpickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
-import ErrorAlert from "@/components/modal/ErrorAlert.vue";
+import ErrorAlert from "@/components/alert/ErrorAlert.vue";
 
 export default {
   name: "RegistrationModal",

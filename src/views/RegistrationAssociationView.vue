@@ -6,6 +6,7 @@
           <h3>Registration Association Form</h3>
         </div>
         <div>
+          <SuccessAlert v-if="registrationSuccess" :success-message="successMessage"/>
           <ErrorAlert :error-message="errorMessage"/>
         </div>
         <div class="mb-3">
@@ -66,12 +67,12 @@
         <div class="mb-3">
           <div class="input-group flex-nowrap">
             <span class="input-group-text">Lift</span>
-            <div class="col form-check">
+            <div class="col form-check ms-5 mt-1">
               <input class="form-check-input" type="radio" v-model="associationInfo.buildingLift"
                      :value="true">
               <label class="form-check-label" for="flexRadioDefault1">available</label>
             </div>
-            <div class="col form-check">
+            <div class="col form-check mt-1">
               <input class="form-check-input" type="radio" v-model="associationInfo.buildingLift"
                      :value="false">
               <label class="form-check-label" for="flexRadioDefault2">unavailable</label>
@@ -91,12 +92,13 @@
 
 <script>
 import 'flatpickr/dist/flatpickr.css';
-import ErrorAlert from "@/components/modal/ErrorAlert.vue";
+import ErrorAlert from "@/components/alert/ErrorAlert.vue";
 import VueFlatpickr from "vue-flatpickr-component";
+import SuccessAlert from "@/components/alert/SuccessAlert.vue";
 
 export default {
   name: "RegistrationAssociationView",
-  components: {ErrorAlert, VueFlatpickr},
+  components: {ErrorAlert, VueFlatpickr, SuccessAlert},
   data() {
     return {
       associationInfo: {
@@ -111,6 +113,8 @@ export default {
         email: '',
         regNumber: '',
       },
+      registrationSuccess: false,
+      successMessage: '',
       errorMessage: '',
       errorResponse: {
         message: '',
@@ -147,6 +151,7 @@ export default {
     sendRegisterNewAssociationRequest() {
       this.$http.post("/association/registration", this.associationInfo
       ).then(response => {
+        this.handleRegistrationSuccess();
       })
     },
 
@@ -154,6 +159,14 @@ export default {
       this.errorMessage = 'Please fill all fields'
       setTimeout(() => {
         this.errorMessage = '';
+      }, 2000)
+    },
+
+    handleRegistrationSuccess() {
+      this.registrationSuccess = true;
+      this.successMessage = 'Registration success';
+      setTimeout(() => {
+        this.registrationSuccess = false;
       }, 2000)
     },
   }

@@ -32,7 +32,7 @@
 <script>
 
 import Modal from "@/components/modal/Modal.vue";
-import ErrorAlert from "@/components/modal/ErrorAlert.vue";
+import ErrorAlert from "@/components/alert/ErrorAlert.vue";
 
 export default {
 
