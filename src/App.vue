@@ -68,6 +68,7 @@
 </template>
 
 
+
 <script>
 
 import LoginModal from "@/components/modal/LoginModal.vue";
