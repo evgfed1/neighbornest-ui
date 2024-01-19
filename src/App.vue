@@ -9,6 +9,7 @@
     <div class="row">
 
 
+
       <div class="col-12 text-center">
         <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
 
