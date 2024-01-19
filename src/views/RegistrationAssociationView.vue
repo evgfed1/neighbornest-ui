@@ -121,13 +121,6 @@ export default {
       successMessage: '',
       errorMessage: '',
       errorMessageResponse: '',
-      errorResponse: {
-        message: '',
-        errorCode: 0,
-      },
-      validationResponse: {
-        regNumber: ''
-      },
     }
   },
 
@@ -198,7 +191,6 @@ export default {
         this.errorMessage = '';
       }, 2000)
     },
-
 
   }
 }
