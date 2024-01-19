@@ -1,20 +1,12 @@
 <template>
-
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
-
   <div class="container-fluid">
-
     <div class="row">
-
-
       <div class="col-12 text-center">
         <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
-
-
       </div>
-
       <div class="col-4">
         <div>
           <router-link to="/homepage">
@@ -23,94 +15,57 @@
           <div v-if="isLoggedIn">
             <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
           </div>
-          <div>
-            TEST 2
-          </div>
         </div>
       </div>
-
       <div class="col-4 container-fluid text-center">
-        TEST 3
         <div v-if="!isLoggedIn" class="row">
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Price</button>
-
+            <button type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Price</button>
           </div>
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">About</button>
-
+            <button type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">About</button>
           </div>
           <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Contact</button>
-
+            <button type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Contact</button>
           </div>
         </div>
         <div v-if="isLoggedIn" class="row">
           <div class="col-4">
-            <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
+            <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">News</button>
           </div>
           <div class="col-4">
-            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
-
+            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Consumption</button>
           </div>
           <div class="col-4">
-            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
-
+            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Conversation</button>
           </div>
         </div>
       </div>
 
       <div class="col-4 text-end">
-        TEST 4
         <div v-if="isLoggedIn">
-          <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
+          <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">
             Registration Association
           </button>
-          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
+          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Log out</button>
         </div>
 
         <div v-else>
-          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2">Login</button>
-          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
+          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2 mt-2">Login</button>
+          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark mt-2">
             Registration
           </button>
         </div>
       </div>
 
-      <div class="col text-center">
-        TEST 5
-      </div>
-
-      <div class="col text-center">
-        TEST 6
-      </div>
-
-      <div class="col text-center">
-        TEST 7
-      </div>
-
       <div v-if="isLoggedIn" id="=app" class="container-fluid">
-        APP:
         <router-view/>
       </div>
-
 
     </div>
   </div>
 
-
 </template>
-
-
-
-<style>
-.stretched-image {
-  width: 100%;
-  height: auto;
-}
-</style>
-
-
 
 
 <script>
@@ -170,3 +125,11 @@ export default {
 }
 
 </script>
+
+
+<style>
+.stretched-image {
+  width: 100%;
+  height: auto;
+}
+</style>
