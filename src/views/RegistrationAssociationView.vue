@@ -162,6 +162,28 @@ export default {
       });
     },
 
+    handleRegistrationSuccess() {
+      this.registrationSuccess = true;
+      this.successMessage = 'Registration success';
+      this.clearRegistrationAssociationFormFields();
+      setTimeout(() => {
+        this.registrationSuccess = false;
+      }, 2000)
+    },
+
+    clearRegistrationAssociationFormFields() {
+      this.associationInfo.buildingDateOfBuild = null;
+      this.associationInfo.buildingCadastral = '';
+      this.associationInfo.buildingFloors = '';
+      this.associationInfo.buildingLift = null;
+      this.associationInfo.buildingAddress = '';
+      this.associationInfo.buildingPostIndex = '';
+      this.associationInfo.name = '';
+      this.associationInfo.phone = '';
+      this.associationInfo.email = '';
+      this.associationInfo.regNumber = '';
+    },
+
     handelRegistrationError(data) {
       this.registrationError = true;
       this.errorMessageResponse = data.message;
@@ -177,27 +199,7 @@ export default {
       }, 2000)
     },
 
-    handleRegistrationSuccess() {
-      this.registrationSuccess = true;
-      this.successMessage = 'Registration success';
-      this.clearFormFields();
-      setTimeout(() => {
-        this.registrationSuccess = false;
-      }, 2000)
-    },
 
-    clearFormFields() {
-      this.associationInfo.buildingDateOfBuild = null;
-      this.associationInfo.buildingCadastral = '';
-      this.associationInfo.buildingFloors = '';
-      this.associationInfo.buildingLift = null;
-      this.associationInfo.buildingAddress = '';
-      this.associationInfo.buildingPostIndex = '';
-      this.associationInfo.name = '';
-      this.associationInfo.phone = '';
-      this.associationInfo.email = '';
-      this.associationInfo.regNumber = '';
-    },
   }
 }
 </script>
