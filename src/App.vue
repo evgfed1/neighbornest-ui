@@ -4,35 +4,115 @@
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
 
-  <div class="d-flex justify-content-between ms-5 me-5 mt-4 mb-5">
 
-    <div>
-      <nav class="mt-3">
-<!--        <router-link to="/homepage" class="me-3">Home page</router-link>-->
-        <template v-if="isLoggedIn">
+  <div class="container-fluid">
+
+    <div class="row">
+
+
+      <div class="col-12 text-center">
+        <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
+
+
+      </div>
+
+      <div class="col-4">
+        <div>
+          <router-link to="/homepage">
+            <h3>NeighborNest</h3>
+          </router-link>
+          <div v-if="isLoggedIn">
+            <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
+          </div>
+          <div>
+            TEST 2
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 container-fluid text-center">
+        TEST 3
+        <div v-if="!isLoggedIn" class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Price</button>
+
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">About</button>
+
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-dark ms-1 me-1">Contact</button>
+
+          </div>
+        </div>
+        <div v-if="isLoggedIn" class="row">
+          <div class="col-4">
+            <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
+          </div>
+          <div class="col-4">
+            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
+
+          </div>
+          <div class="col-4">
+            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 text-end">
+        TEST 4
+        <div v-if="isLoggedIn">
           <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
             Registration Association
           </button>
           <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
-          <div class="d-flex justify-content-center align-items-center">
-            <h4 class="mt-3">Welcome, {{ firstName }} {{ lastName }}!</h4>
-          </div>
-        </template>
+        </div>
 
-
-
-        <template v-else>
-          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-1">Login</button>
-          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark ms-1 me-1">Registration
+        <div v-else>
+          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2">Login</button>
+          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
+            Registration
           </button>
-        </template>
-      </nav>
+        </div>
+      </div>
+
+      <div class="col text-center">
+        TEST 5
+      </div>
+
+      <div class="col text-center">
+        TEST 6
+      </div>
+
+      <div class="col text-center">
+        TEST 7
+      </div>
+
+      <div v-if="isLoggedIn" id="=app" class="container-fluid">
+        APP:
+        <router-view/>
+      </div>
+
+
     </div>
   </div>
-  <div id="=app" class="ms-5 me-5">
-    <router-view/>
-  </div>
+
+
 </template>
+
+
+
+<style>
+.stretched-image {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+
+
 
 <script>
 
@@ -66,6 +146,7 @@ export default {
         this.isLoggedIn = true;
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
+        router.push('/homepage')
       }
     },
     openLogoutModal() {
