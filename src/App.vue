@@ -4,7 +4,6 @@
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
 
-
   <div class="container-fluid">
 
     <div class="row">
