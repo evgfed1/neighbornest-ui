@@ -8,6 +8,9 @@
         <div>
           <SuccessAlert v-if="registrationSuccess" :success-message="successMessage"/>
           <ErrorAlert :error-message="errorMessage"/>
+          <div v-if="registrationError" class="alert alert-danger">
+            {{errorMessageResponse}}
+          </div>
         </div>
         <div class="mb-3">
           <div class="input-group flex-nowrap">
@@ -114,8 +117,10 @@ export default {
         regNumber: '',
       },
       registrationSuccess: false,
+      registrationError: false,
       successMessage: '',
       errorMessage: '',
+      errorMessageResponse: '',
       errorResponse: {
         message: '',
         errorCode: 0,
@@ -152,7 +157,17 @@ export default {
       this.$http.post("/association/registration", this.associationInfo
       ).then(response => {
         this.handleRegistrationSuccess();
-      })
+      }).catch(error => {
+        this.handelRegistrationError(error.response.data)
+      });
+    },
+
+    handelRegistrationError(data) {
+      this.registrationError = true;
+      this.errorMessageResponse = data.message;
+      setTimeout(() => {
+        this.registrationError = false;
+      }, 2000);
     },
 
     handleErrorAlert() {
@@ -165,9 +180,23 @@ export default {
     handleRegistrationSuccess() {
       this.registrationSuccess = true;
       this.successMessage = 'Registration success';
+      this.clearFormFields();
       setTimeout(() => {
         this.registrationSuccess = false;
       }, 2000)
+    },
+
+    clearFormFields() {
+      this.associationInfo.buildingDateOfBuild = null;
+      this.associationInfo.buildingCadastral = '';
+      this.associationInfo.buildingFloors = '';
+      this.associationInfo.buildingLift = null;
+      this.associationInfo.buildingAddress = '';
+      this.associationInfo.buildingPostIndex = '';
+      this.associationInfo.name = '';
+      this.associationInfo.phone = '';
+      this.associationInfo.email = '';
+      this.associationInfo.regNumber = '';
     },
   }
 }

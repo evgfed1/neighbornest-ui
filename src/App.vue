@@ -8,7 +8,7 @@
 
     <div>
       <nav class="mt-3">
-        <router-link to="/homepage" class="me-3">Home page</router-link>
+<!--        <router-link to="/homepage" class="me-3">Home page</router-link>-->
         <template v-if="isLoggedIn">
           <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
             Registration Association
