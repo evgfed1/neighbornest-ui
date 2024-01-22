@@ -26,13 +26,17 @@
           <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">From:</span>
-              <vue-flatpickr v-model="consumptionResponse.dateFrom" class="form-control"></vue-flatpickr>
+              <!--              <vue-flatpickr v-model="consumptionResponse.dateFrom" class="form-control" :config="flatpickrConfig"></vue-flatpickr>-->
+              <vue-flatpickr v-model="consumptionResponse.consumptionInfo.dateFrom" type="text"
+                             class="form-control"></vue-flatpickr>
             </div>
           </div>
           <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">To:</span>
-              <vue-flatpickr v-model="consumptionResponse.dateTo" class="form-control"></vue-flatpickr>
+              <!--              <vue-flatpickr v-model="consumptionResponse.dateTo" class="form-control" :config="flatpickrConfig"></vue-flatpickr>-->
+              <vue-flatpickr v-model="consumptionResponse.consumptionInfo.dateTo" type="text"
+                             class="form-control"></vue-flatpickr>
             </div>
           </div>
           <div class="col-2">
@@ -50,7 +54,7 @@
             <th scope="col">Cold water</th>
             <th scope="col">Electricity</th>
             <th scope="col">Gas</th>
-            <th scope="col">TEST</th>
+            <th scope="col">userId</th>
           </tr>
           </thead>
           <tbody>
@@ -91,16 +95,16 @@ export default {
   data() {
     return {
       consumptionResponse: {
-        userId: '',
+        userId: sessionStorage.getItem('userId'),
         consumptionInfo: {
-          hotWater: 0,
-          coldWater: 0,
-          electricity: 0,
-          gas: 0,
-          dateCurrent: 0,
-          dateFrom: 0,
-          dateTo: 0,
-        }
+          hotWater: null,
+          coldWater: null,
+          electricity: null,
+          gas: null,
+          dateCurrent: null,
+          dateFrom: null,
+          dateTo: null,
+        },
 
       },
       errorResponse: {
@@ -110,27 +114,38 @@ export default {
       errorMessage: '',
       // flatpickrConfig: {
       //   dateFormat: 'Y-m',
+      // }
     }
   },
   methods: {
     sendConsumptionRequest() {
-      if (this.allRequiredFieldsAreFilled()) {
+      if (this.timePeriodIsNotEmpty()) {
         this.sendConsumptionByPeriod()
       } else {
         this.handleErrorAlert()
+        alert("hernja")
       }
     },
-    allRequiredFieldsAreFilled() {
-      return this.consumptionResponse.dateFrom.length > 0 && this.consumptionResponse.dateTo.length > 0;
+
+    timePeriodIsNotEmpty() {
+      return this.consumptionResponse.consumptionInfo.dateFrom !== null &&
+          this.consumptionResponse.consumptionInfo.dateTo !== null &&
+          this.consumptionResponse.consumptionInfo.dateFrom !== '' &&
+          this.consumptionResponse.consumptionInfo.dateTo !== '' &&
+          this.consumptionResponse.consumptionInfo.dateFrom !== 0 &&
+          this.consumptionResponse.consumptionInfo.dateTo !== 0;
     },
+
     sendConsumptionByPeriod() {
-      this.$http.get('/consumption', {
+      this.$http.get('/consumption/period', {
         params: {
           hotWater: this.consumptionResponse.consumptionInfo.hotWater,
           coldWater: this.consumptionResponse.consumptionInfo.coldWater,
           electricity: this.consumptionResponse.consumptionInfo.electricity,
           gas: this.consumptionResponse.consumptionInfo.gas,
-          userId: this.consumptionResponse.userId
+          userId: this.consumptionResponse.userId,
+          dateFrom: this.consumptionResponse.consumptionInfo.dateFrom,
+          dateTo: this.consumptionResponse.consumptionInfo.dateTo
         }
       }).then(response => {
         this.consumptionResponse = response.data
