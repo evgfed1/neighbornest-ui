@@ -1,31 +1,43 @@
 <template>
 
-  <h1>News info</h1>
-
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-4">
-        <h5>News text 1</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aut esse libero quo sint! Assumenda
-          beatae cum cupiditate deleniti dolores, doloribus eius eos, ex libero magni, maxime minus mollitia nobis
-          placeat praesentium quae rem reprehenderit sit tenetur voluptatem! Cupiditate et iure voluptas.
-        </div>
+
+    <div>
+      <h1>News</h1>
+      <ul>
+        <li v-for="(newsItem, index) in newsList" :key="index">
+          <div class="news-item">
+            <h3>{{ newsItem.title }}</h3>
+            <p class="datetime">{{ newsItem.dateTime }}</p>
+            <p class="content">{{ newsItem.text }}</p>
+          </div>
+        </li>
+      </ul>
+
+      <button @click="toggleForm" class="btn btn-outline-dark">Add news</button>
+
+      <div v-if="showForm">
+        <h2>Create news</h2>
+        <form @submit.prevent="addNews">
+          <div class="mb-3">
+            <label for="titleInput" class="form-label">Title:</label>
+            <input type="text" id="titleInput" class="form-control" v-model="newNewsTitle" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="dateTimeInput" class="form-label">Date/time:</label>
+            <input type="datetime-local" id="dateTimeInput" class="form-control" v-model="newNewsDateTime" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="newsInput" class="form-label">Content:</label>
+            <textarea id="newsInput" class="form-control" rows="5" v-model="newNewsText" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-outline-dark">Add</button>
+        </form>
       </div>
 
-      <div class="col-4">
-        <h5>News text 2</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aut, beatae commodi, debitis
-          deserunt eaque earum esse eum fuga fugiat laborum modi neque nihil numquam quaerat quod sed, tempora veritatis
-          vero. Ab atque delectus facere inventore nisi quas quasi quia quibusdam, tempora tempore? Asperiores
-          consequuntur exercitationem illum ipsam magnam, sunt!
-        </div>
-      </div>
-
-      <div class="col-4">
-        <h5>News text 3</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A at aut enim eos mollitia, obcaecati?
-        </div>
-      </div>
     </div>
   </div>
 
@@ -33,7 +45,41 @@
 
 <script>
 export default {
-  name: "NewsView"
+  name: "NewsView",
+  data() {
+    return {
+      newsList: [],
+      showForm: false,
+      newNewsText: "",
+      newNewsTitle: "",
+      newNewsDateTime: "",
+    };
+  },
+  methods: {
+
+n
+    toggleForm() {
+      this.showForm = !this.showForm;
+    },
+
+    addNews() {
+      if (this.newNewsText.trim() !== "" &&
+          this.newNewsTitle.trim() !== "" &&
+          this.newNewsDateTime.trim() !== "") {
+        const newNews = {
+          title: this.newNewsTitle,
+          dateTime: this.newNewsDateTime,
+          text: this.newNewsText,
+        };
+        this.newsList.push(newNews);
+        this.newNewsTitle = "";
+        this.newNewsDateTime = "";
+        this.newNewsText = "";
+        this.showForm = false;
+      }
+    },
+  },
+
 }
 </script>
 
