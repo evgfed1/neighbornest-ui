@@ -26,13 +26,17 @@
           <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">From:</span>
-              <vue-flatpickr v-model="consumptionResponse.dateFrom" class="form-control"></vue-flatpickr>
+              <!--              <vue-flatpickr v-model="dateFrom" class="form-control" :config="flatpickrConfig"></vue-flatpickr>-->
+              <vue-flatpickr v-model="dateFrom" type="text"
+                             class="form-control"></vue-flatpickr>
             </div>
           </div>
           <div class="col-5">
             <div class="input-group mb-3">
               <span class="input-group-text">To:</span>
-              <vue-flatpickr v-model="consumptionResponse.dateTo" class="form-control"></vue-flatpickr>
+              <!--              <vue-flatpickr v-model="dateTo" class="form-control" :config="flatpickrConfig"></vue-flatpickr>-->
+              <vue-flatpickr v-model="dateTo" type="text"
+                             class="form-control"></vue-flatpickr>
             </div>
           </div>
           <div class="col-2">
@@ -50,17 +54,15 @@
             <th scope="col">Cold water</th>
             <th scope="col">Electricity</th>
             <th scope="col">Gas</th>
-            <th scope="col">TEST</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <th>{{ consumptionResponse.consumptionInfo.dateCurrent }}</th>
-            <td>{{ consumptionResponse.consumptionInfo.hotWater }}</td>
-            <td>{{ consumptionResponse.consumptionInfo.coldWater }}</td>
-            <td>{{ consumptionResponse.consumptionInfo.electricity }}</td>
-            <td>{{ consumptionResponse.consumptionInfo.gas }}</td>
-            <td>{{ consumptionResponse.userId }}</td>
+            <th>{{ dateCurrent }}</th>
+            <td>{{ consumptionInfo.hotWater }}</td>
+            <td>{{ consumptionInfo.coldWater }}</td>
+            <td>{{ consumptionInfo.electricity }}</td>
+            <td>{{ consumptionInfo.gas }}</td>
           </tr>
           </tbody>
         </table>
@@ -90,19 +92,16 @@ export default {
 
   data() {
     return {
-      consumptionResponse: {
-        userId: '',
-        consumptionInfo: {
-          hotWater: 0,
-          coldWater: 0,
-          electricity: 0,
-          gas: 0,
-          dateCurrent: 0,
-          dateFrom: 0,
-          dateTo: 0,
-        }
-
+      userId: sessionStorage.getItem('userId'),
+      consumptionInfo: {
+        hotWater: null,
+        coldWater: null,
+        electricity: null,
+        gas: null,
       },
+      dateCurrent: null,
+      dateFrom: null,
+      dateTo: null,
       errorResponse: {
         message: '',
         errorCode: 0
@@ -110,35 +109,37 @@ export default {
       errorMessage: '',
       // flatpickrConfig: {
       //   dateFormat: 'Y-m',
+      // }
     }
   },
   methods: {
     sendConsumptionRequest() {
-      if (this.allRequiredFieldsAreFilled()) {
+      if (this.timePeriodIsNotEmpty()) {
         this.sendConsumptionByPeriod()
       } else {
         this.handleErrorAlert()
+        alert("hernja")
       }
     },
-    allRequiredFieldsAreFilled() {
-      return this.consumptionResponse.dateFrom.length > 0 && this.consumptionResponse.dateTo.length > 0;
+
+    timePeriodIsNotEmpty() {
+      return this.dateFrom !== null &&
+          this.dateFrom !== 0 &&
+          this.dateFrom !== '' &&
+          this.dateTo !== null &&
+          this.dateTo !== 0 &&
+          this.dateTo !== '';
     },
+
     sendConsumptionByPeriod() {
-      this.$http.get('/consumption', {
+      this.$http.get('/consumption/period', {
         params: {
-          hotWater: this.consumptionResponse.consumptionInfo.hotWater,
-          coldWater: this.consumptionResponse.consumptionInfo.coldWater,
-          electricity: this.consumptionResponse.consumptionInfo.electricity,
-          gas: this.consumptionResponse.consumptionInfo.gas,
-          userId: this.consumptionResponse.userId
+          userId: this.userId,
+          dateFrom: this.dateFrom,
+          dateTo: this.dateTo
         }
       }).then(response => {
-        this.consumptionResponse = response.data
-        sessionStorage.setItem('userId', this.consumptionResponse.userId)
-        sessionStorage.setItem('hotWater', this.consumptionResponse.consumptionInfo.hotWater)
-        sessionStorage.setItem('coldWater', this.consumptionResponse.consumptionInfo.coldWater)
-        sessionStorage.setItem('electricity', this.consumptionResponse.consumptionInfo.electricity)
-        sessionStorage.setItem('gas', this.consumptionResponse.consumptionInfo.gas)
+        this.consumptionInfo = response.data
       }).catch(error => {
         this.errorResponse = error.response.data
         const httpStatusCode = error.response.status
