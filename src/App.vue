@@ -1,5 +1,4 @@
 <template>
-
   <LoginModal ref="loginModalRef" @event-login-success="handleLogin"/>
   <LogOutModal ref="logOutModal" @event-execute-logout="handleLogout"/>
   <RegistrationModal ref="registrationModalRef" @event-registration-success="handleRegistration"/>
@@ -8,12 +7,8 @@
 
     <div class="row">
 
-
-
       <div class="col-12 text-center">
         <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
-
-
       </div>
 
       <div class="col-4">
@@ -91,7 +86,6 @@
       </div>
 
       <div v-if="isLoggedIn" id="=app" class="container-fluid">
-        APP:
         <router-view/>
       </div>
 
@@ -99,19 +93,7 @@
     </div>
   </div>
 
-
 </template>
-
-
-
-<style>
-.stretched-image {
-  width: 100%;
-  height: auto;
-}
-</style>
-
-
 
 
 <script>
@@ -171,3 +153,12 @@ export default {
 }
 
 </script>
+
+
+<style>
+.stretched-image {
+  width: 100%;
+  height: auto;
+}
+</style>
+
