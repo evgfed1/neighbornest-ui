@@ -5,6 +5,11 @@ import RegistrationAssociationView from "@/views/RegistrationAssociationView.vue
 import ConsumptionView from "@/views/ConsumptionView.vue";
 import ConversationView from "@/views/ConversationView.vue";
 import NewsView from "@/views/NewsView.vue";
+import AboutView from "@/views/AboutView.vue";
+import ContactView from "@/views/ContactView.vue";
+import MainButtonsIsLoggedIn from "@/components/MainButtonsIsLoggedIn.vue";
+import MainButtonsIsLoggedOut from "@/components/MainButtonsIsLoggedOut.vue";
+import PriceView from "@/views/PriceView.vue";
 
 const routes = [
   {
@@ -37,7 +42,21 @@ const routes = [
     name: 'newsRoute',
     component: NewsView
   },
-
+  {
+    path: '/price',
+    name: 'priceRoute',
+    component: PriceView
+  },
+  {
+    path: '/about',
+    name: 'aboutRoute',
+    component: AboutView
+  },
+  {
+    path: '/contact',
+    name: 'contactRoute',
+    component: ContactView
+  },
 ]
 
 const router = createRouter({

@@ -27,31 +27,24 @@
 
       <div class="col-4 container-fluid text-center">
         TEST 3
-        <div v-if="!isLoggedIn" class="row">
-          <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Price</button>
 
-          </div>
-          <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">About</button>
+        <MainButtonsIsLoggedOut v-if="!isLoggedIn"/>
+        <MainButtonsIsLoggedIn v-if="isLoggedIn"/>
 
-          </div>
-          <div class="col-4">
-            <button type="button" class="btn btn-outline-dark ms-1 me-1">Contact</button>
 
-          </div>
-        </div>
-        <div v-if="isLoggedIn" class="row">
+        <div v-if="isLoggedIn && isEnteredInCoop" class="row">
           <div class="col-4">
             <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
           </div>
           <div class="col-4">
-            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">Consumption</button>
-
+            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">
+              Consumption
+            </button>
           </div>
           <div class="col-4">
-            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">Conversation</button>
-
+            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">
+              Conversation
+            </button>
           </div>
         </div>
       </div>
@@ -85,7 +78,8 @@
         TEST 7
       </div>
 
-      <div v-if="isLoggedIn" id="=app" class="container-fluid">
+
+      <div id="=app" class="container-fluid">
         <router-view/>
       </div>
 
@@ -102,11 +96,14 @@ import LoginModal from "@/components/modal/LoginModal.vue";
 import RegistrationModal from "@/components/modal/RegistrationModal.vue";
 import router from "@/router";
 import LogOutModal from "@/components/modal/LogOutModal.vue";
+import MainButtonsIsLoggedIn from "@/components/MainButtonsIsLoggedIn.vue";
+import MainButtonsIsLoggedOut from "@/components/MainButtonsIsLoggedOut.vue";
 
 export default {
-  components: {LogOutModal, RegistrationModal, LoginModal},
+  components: {MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal},
   data() {
     return {
+      isEnteredInCoop: false,
       isLoggedIn: false,
       userId: 0,
       firstName: '',
