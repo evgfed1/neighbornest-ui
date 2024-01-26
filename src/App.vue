@@ -7,11 +7,11 @@
 
     <div class="row">
 
-      <div class="col-12 text-center">
+      <div class="col-12 text-center mb-1">
         <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
       </div>
 
-      <div class="col-4">
+      <div class="col-4 bg-body-secondary text-emphasis-info">
         <div>
           <router-link to="/homepage">
             <h3>NeighborNest</h3>
@@ -25,14 +25,14 @@
         </div>
       </div>
 
-      <div class="col-4 container-fluid text-center">
+      <div class="col-4 container-fluid text-center bg-body-secondary text-emphasis-info">
         TEST 3
 
         <MainButtonsIsLoggedOut v-if="!isLoggedIn"/>
         <MainButtonsIsLoggedIn v-if="isLoggedIn"/>
 
 
-        <div v-if="isLoggedIn && isEnteredInCoop" class="row">
+        <div v-if="isLoggedIn && isEnteredInCoop" class="row bg-body-secondary text-emphasis-info">
           <div class="col-4">
             <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
           </div>
@@ -49,12 +49,11 @@
         </div>
       </div>
 
-      <div class="col-4 text-end">
+
+
+      <div class="col-4 text-end bg-body-secondary text-emphasis-info">
         TEST 4
         <div v-if="isLoggedIn">
-          <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
-            Registration Association
-          </button>
           <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
         </div>
 
@@ -63,9 +62,10 @@
           <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
             Registration
           </button>
+
         </div>
       </div>
-
+      <div class="row  bg-body-secondary text-emphasis-info">
       <div class="col text-center">
         TEST 5
       </div>
@@ -74,15 +74,18 @@
         TEST 6
       </div>
 
+
       <div class="col text-center">
         TEST 7
       </div>
-
+      </div>
+      <hr class="mt-2">
 
       <div id="=app" class="container-fluid">
         <router-view/>
       </div>
 
+      <hr v-if="isLoggedIn" class="mt-5">
 
     </div>
   </div>
@@ -151,11 +154,14 @@ export default {
 
 </script>
 
-
 <style>
 .stretched-image {
   width: 100%;
   height: auto;
+}
+.bg-success {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
 </style>
 

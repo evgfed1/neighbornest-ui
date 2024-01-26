@@ -11,7 +11,7 @@
       <button @click="$router.push('/contact')" type="button" class="btn btn-outline-dark ms-1 me-1">Contact</button>
     </div>
     <div class="col-3">
-      <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">Association</button>
+      <button @click="$router.push('/association')" type="button" class="btn btn-outline-dark ms-1 me-1">Association</button>
     </div>
   </div>
 
