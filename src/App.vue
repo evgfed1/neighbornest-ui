@@ -86,6 +86,16 @@
       </div>
 
       <hr v-if="isLoggedIn" class="mt-5">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1 v-if="!isLoggedIn" class="text-center"> Welcome to our pet-project</h1>
 
     </div>
   </div>
