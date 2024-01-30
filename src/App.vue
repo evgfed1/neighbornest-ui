@@ -129,6 +129,7 @@ export default {
     },
 
     openLogoutModal() {
+      this.changeStatusForCoop()
       this.$refs.logOutModal.$refs.modalRef.openModal()
     },
 
