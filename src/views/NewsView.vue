@@ -26,7 +26,6 @@
 
           <div class="mb-3">
             <label for="dateTimeInput" class="form-label">Event date/time:</label>
-            <!--                        <vue-flatpickr v-model="newNewsDateTime" type="text"></vue-flatpickr>-->
             <input type="datetime-local" id="dateTimeInput" class="form-control" v-model="newsRequest.eventDate" required>
           </div>
 

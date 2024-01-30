@@ -9,6 +9,7 @@ import AboutView from "@/views/AboutView.vue";
 import ContactView from "@/views/ContactView.vue";
 import PriceView from "@/views/PriceView.vue";
 import AssociationView from "@/views/AssociationView.vue";
+import AssociationEnterView from "@/views/AssociationEnterView.vue";
 
 const routes = [
     {
@@ -55,6 +56,11 @@ const routes = [
         path: '/contact',
         name: 'contactRoute',
         component: ContactView
+    },
+    {
+        path: '/association-enter',
+        name: 'associationEnterRoute',
+        component: AssociationEnterView
     },
     {
         path: '/association',

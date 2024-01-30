@@ -29,27 +29,10 @@
         TEST 3
 
         <MainButtonsIsLoggedOut v-if="!isLoggedIn"/>
-        <MainButtonsIsLoggedIn v-if="isLoggedIn"/>
+        <MainButtonsIsLoggedIn v-if="isLoggedIn && !isEnteredInCoop"/>
+        <MainButtonsIsEnteredInCoop v-if="isLoggedIn && isEnteredInCoop"/>
 
-
-        <div v-if="isLoggedIn && isEnteredInCoop" class="row bg-body-secondary text-emphasis-info">
-          <div class="col-4">
-            <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
-          </div>
-          <div class="col-4">
-            <button @click="$router.push('/consumption')" type="button" class="btn btn-outline-dark ms-1 me-1">
-              Consumption
-            </button>
-          </div>
-          <div class="col-4">
-            <button @click="$router.push('/conversation')" type="button" class="btn btn-outline-dark ms-1 me-1">
-              Conversation
-            </button>
-          </div>
-        </div>
       </div>
-
-
 
       <div class="col-4 text-end bg-body-secondary text-emphasis-info">
         TEST 4
@@ -111,9 +94,12 @@ import router from "@/router";
 import LogOutModal from "@/components/modal/LogOutModal.vue";
 import MainButtonsIsLoggedIn from "@/components/MainButtonsIsLoggedIn.vue";
 import MainButtonsIsLoggedOut from "@/components/MainButtonsIsLoggedOut.vue";
+import MainButtonsIsEnteredInCoop from "@/components/MainButtonsIsEnteredInCoop.vue";
 
 export default {
-  components: {MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal},
+  components: {
+    MainButtonsIsEnteredInCoop,
+    MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal},
   data() {
     return {
       isEnteredInCoop: false,
@@ -141,17 +127,19 @@ export default {
         router.push('/homepage')
       }
     },
+
     openLogoutModal() {
       this.$refs.logOutModal.$refs.modalRef.openModal()
     },
+
     handleLogout() {
       sessionStorage.clear();
       const userId = sessionStorage.getItem('userId');
       this.isLoggedIn = userId !== null;
       router.push('/')
     },
-    handleRegistration() {
 
+    handleRegistration() {
       this.userId = parseInt(sessionStorage.getItem('userId'));
       if (this.userId > 0) {
         this.isLoggedIn = true;
@@ -159,6 +147,12 @@ export default {
         this.lastName = String(sessionStorage.getItem("lastName"))
       }
     },
+
+    changeStatusForCoop() {
+      this.isEnteredInCoop = !this.isEnteredInCoop;
+      alert("isEnteredInCoop: " + this.isEnteredInCoop)
+    }
+
   }
 }
 
