@@ -1,28 +1,48 @@
 <template>
 
-  <h1>Price info</h1>
 
   <div class="container-fluid">
     <div class="row">
+      <div class="text-center">
+        <h5><p>Мы предлагаем разнообразные пакеты услуг для удовлетворения потребностей вашего жилищного
+          товарищества.</p>
+          <p>Наши
+            цены ориентированы на предоставление качественных и надежных сервисов.</p>
+          <p>Выберите подходящий для вас план и
+            наслаждайтесь удобствами нашего приложения!</p></h5>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="col-4">
-        <h5>Price text 1</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis consequuntur delectus
-          dignissimos explicabo nemo repudiandae soluta sunt totam.
+        <br>
+        <div>
+          <p><strong>Базовый план (€4.99/месяц):</strong></p>
+          <p>Ввод и отслеживание показаний счетчиков.</p>
+          <p> Участие в обсуждениях и мероприятиях товарищества.</p>
+          <p> Просмотр актуальных новостей.</p>
         </div>
       </div>
 
       <div class="col-4">
-        <h5>Price text 2</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet commodi consectetur cumque cupiditate
-          delectus deleniti esse iste itaque iure non, quis quo, reprehenderit sequi sit velit? Aut cum deserunt dolores
-          eaque exercitationem fugiat fugit magnam, mollitia nisi non perspiciatis quam repellendus sapiente tenetur
-          vel, vero, voluptatum? Amet, excepturi?
-        </div>
+        <br>
+        <div><p><strong>Продвинутый план (€8.99/месяц):</strong></p>
+          <p>Все функции базового плана.</p>
+          <p>Возможность слушать громкую музыку до 23:15</p>
+          <p>Дополнительная функциональность для организации мероприятий и голосований.</p>
+          <p>Расширенные возможности по архиву показаний счетчиков.</p></div>
       </div>
 
       <div class="col-4">
-        <h5>Price text 3</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, omnis, placeat.</div>
+        <br>
+        <div><p><strong>Премиум план (€14.99/месяц):</strong></p>
+          <p>Все функции стандартного плана.</p>
+          <p>Персональный онлайн-кабинет для управления своим жилищем.</p>
+          <p> Эксклюзивные возможности по взаимодействию с соседями (Бригада крепких ребят) и участию в эксклюзивных,
+            закрытых мероприятиях.</p></div>
       </div>
     </div>
   </div>

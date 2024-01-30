@@ -7,78 +7,75 @@
 
     <div class="row">
 
-      <div class="col-12 text-center mb-1">
-        <img src="/blackStripe.png" alt="blackStripe" class="stretched-image">
-      </div>
+      <div class="col-12 text-center bg-dark text-white" style="height: 15px;"></div>
 
-      <div class="col-4 bg-body-secondary text-emphasis-info">
-        <div>
-          <router-link to="/homepage">
-            <h3>NeighborNest</h3>
-          </router-link>
-          <div v-if="isLoggedIn">
-            <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
+
+      <div id="grad1" class="container">
+        <div class="row">
+
+          <div class="col-4">
+            <div>
+              <router-link to="/homepage">
+                <h3>NeighborNest</h3>
+              </router-link>
+              <div v-if="isLoggedIn">
+                <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
+              </div>
+            </div>
           </div>
-          <div>
-            TEST 2
+
+          <div class="col-4 container-fluid text-center">
+            <MainButtonsIsLoggedOut v-if="!isLoggedIn"/>
+            <MainButtonsIsLoggedIn v-if="isLoggedIn && !isEnteredInCoop"/>
+            <MainButtonsIsEnteredInCoop v-if="isLoggedIn && isEnteredInCoop"/>
           </div>
+
+          <div class="col-4 text-end">
+            <div v-if="isLoggedIn">
+              <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1 mt-2">Log out
+              </button>
+            </div>
+
+            <div v-else class="mt-2">
+              <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2">Login</button>
+              <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
+                Registration
+              </button>
+            </div>
+          </div>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4 text-center">
+                Menu 1
+              </div>
+              <div class="col-4 text-center">
+                Menu 2
+              </div>
+              <div class="col-4 text-center">
+                Menu 3
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
 
-      <div class="col-4 container-fluid text-center bg-body-secondary text-emphasis-info">
-        TEST 3
 
-        <MainButtonsIsLoggedOut v-if="!isLoggedIn"/>
-        <MainButtonsIsLoggedIn v-if="isLoggedIn && !isEnteredInCoop"/>
-        <MainButtonsIsEnteredInCoop v-if="isLoggedIn && isEnteredInCoop"/>
-
-      </div>
-
-      <div class="col-4 text-end bg-body-secondary text-emphasis-info">
-        TEST 4
-        <div v-if="isLoggedIn">
-          <button @click="openLogoutModal" type="button" class="btn btn-outline-dark ms-1 me-1">Log out</button>
-        </div>
-
-        <div v-else>
-          <button @click="openLoginModal" type="button" class="btn btn-outline-dark ms-2 me-2">Login</button>
-          <button @click="openRegisterNewUserModal" type="button" class="btn btn-outline-dark">
-            Registration
-          </button>
-
-        </div>
-      </div>
-      <div class="row  bg-body-secondary text-emphasis-info">
-      <div class="col text-center">
-        TEST 5
-      </div>
-
-      <div class="col text-center">
-        TEST 6
-      </div>
-
-
-      <div class="col text-center">
-        TEST 7
-      </div>
-      </div>
       <hr class="mt-2">
 
-      <div id="=app" class="container-fluid">
+      <div v-if="!isLoggedIn" class="container-fluid text-center">
+        <div class="bg-image">
+        </div>
+      </div>
+
+      <div id="app" class="container-fluid">
         <router-view/>
       </div>
 
+
       <hr v-if="isLoggedIn" class="mt-5">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1 v-if="!isLoggedIn" class="text-center"> Welcome to our pet-project</h1>
 
     </div>
   </div>
@@ -99,7 +96,8 @@ import MainButtonsIsEnteredInCoop from "@/components/MainButtonsIsEnteredInCoop.
 export default {
   components: {
     MainButtonsIsEnteredInCoop,
-    MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal},
+    MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal
+  },
   data() {
     return {
       isEnteredInCoop: false,
@@ -151,8 +149,7 @@ export default {
     changeStatusForCoop() {
       this.isEnteredInCoop = !this.isEnteredInCoop;
       alert("isEnteredInCoop: " + this.isEnteredInCoop)
-    }
-
+    },
   }
 }
 
@@ -163,9 +160,20 @@ export default {
   width: 100%;
   height: auto;
 }
+
 .bg-success {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
-</style>
 
+#grad1 {
+  height: auto;
+  background-color: #ffffff; /* For browsers that do not support gradients */
+  background-image: linear-gradient(rgba(119, 119, 119, 0.34), white);
+}
+
+a {
+  color: #209bed !important; /* Используйте !important для переопределения стилей Bootstrap, если это необходимо */
+}
+
+</style>

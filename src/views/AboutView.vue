@@ -1,30 +1,65 @@
 <template>
 
-  <h1>About info</h1>
 
   <div class="container-fluid">
     <div class="row">
+      <div class="text-center">
+        <h1>NeighborNest</h1>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="col-4">
-        <h5>About text 1</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, architecto blanditiis consectetur
-          deleniti dolores earum harum ipsam iusto maxime molestiae odio perspiciatis possimus quia reprehenderit
-          temporibus totam veritatis voluptas? Beatae dolores itaque minima perferendis placeat, reprehenderit similique
-          tenetur vero. Deserunt dolorem, ratione.
+        <h5>Друзья!</h5>
+        <br>
+        <div>
+          <h6>
+            <p>Приветствуем вас в удобном и инновационном пространстве, созданном специально для улучшения
+              взаимодействия
+              в вашем жилищном товариществе.</p>
+            <p>Наше приложение объединяет в себе удобство и функциональность, предоставляя
+              широкий спектр возможностей для управления вашим жильем.</p>
+          </h6>
         </div>
       </div>
 
       <div class="col-4">
-        <h5>About text 2</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda culpa dolorum labore libero
-          necessitatibus placeat quia quo? Alias cumque debitis mollitia nisi.
+        <h5>Основные функции:</h5>
+        <br>
+        <div>
+          <p><strong>Показания счетчиков:</strong> Забудьте о бумажных записях! Легко вводите и отслеживайте показания
+            счетчиков, а также
+            просматривайте статистику за любой период времени. Это быстро, удобно и экологично!</p>
+
+          <p><strong>Внутренняя жизнь и мероприятия товарищества:</strong> Будьте в курсе всех событий в вашем доме.
+            Обсуждайте важные
+            вопросы, высказывайте предложения, разрешайте споры и совместно организовывайте мероприятия. Ваше
+            товарищество
+            - ваш дом, и здесь каждый голос важен!</p>
+
+          <p><strong>Новости:</strong> Будьте в курсе последних новостей, касающихся вашего дома, а также
+            пересматривайте архив событий
+            за
+            определенные периоды. Мы поддерживаем вас в информационном плане!</p>
         </div>
       </div>
 
       <div class="col-4">
-        <h5>About text 3</h5>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cupiditate deserunt doloribus ducimus
-          eligendi, fugit id laudantium minima molestias nesciunt optio perferendis quam quia quidem repellendus
-          repudiandae saepe sed voluptatem. Nihil!
+        <h5>Почему наше приложение?</h5>
+        <br>
+        <div>
+          <p><strong>Простота использования:</strong> Мы создали интуитивно понятный интерфейс, который сделает
+            взаимодействие с
+            приложением легким и приятным.</p>
+
+          <p><strong>Безопасность:</strong> Ваши данные в надежных руках. Мы придаем высший приоритет конфиденциальности
+            и безопасности
+            информации.</p>
+
+          <p><strong>Сообщество:</strong> Мы стремимся создать онлайн-среду, в которой каждый житель чувствует себя
+            частью большой семьи.
+            Совместно мы делаем наш дом лучше!</p>
         </div>
       </div>
     </div>

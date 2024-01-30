@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-body-secondary text-emphasis-info">
+  <div class="row bg-body-secondary text-emphasis-info mt-2">
     <div class="col-4">
       <button @click="$router.push('/news')" type="button" class="btn btn-outline-dark ms-1 me-1">News</button>
     </div>

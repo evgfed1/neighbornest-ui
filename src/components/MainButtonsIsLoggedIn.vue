@@ -1,6 +1,6 @@
 <template>
 
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-3">
       <button @click="$router.push('/price')" type="button" class="btn btn-outline-dark ms-1 me-1">Price</button>
     </div>

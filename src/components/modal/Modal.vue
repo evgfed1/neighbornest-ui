@@ -2,7 +2,7 @@
 
   <div v-if="isOpen" class="modal fade show d-block" tabindex="-1" @click="closeModal">
     <div class="modal-dialog" @click.stop>
-      <div class="modal-content">
+      <div class="modal-content" style="margin-top: 40%">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">
             <slot name="header">
@@ -23,7 +23,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 
@@ -48,3 +47,5 @@ export default {
   }
 }
 </script>
+
+
