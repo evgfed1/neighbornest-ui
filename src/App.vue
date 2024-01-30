@@ -46,13 +46,13 @@
 
           <div class="container-fluid">
             <div class="row">
-              <div class="col-4 text-center">
+              <div class="col-4 text-start">
                 Menu 1
               </div>
               <div class="col-4 text-center">
                 Menu 2
               </div>
-              <div class="col-4 text-center">
+              <div class="col-4 text-end">
                 Menu 3
               </div>
             </div>

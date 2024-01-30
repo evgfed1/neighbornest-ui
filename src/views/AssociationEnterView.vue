@@ -38,7 +38,7 @@
     <br>
     <br>
     <br>
-    <p class="margin-top-3">Are You chairman of association?</p>
+    <p class="margin-top-3">Are You the chairman of association?</p>
     <button @click="$router.push('/registration')" type="button" class="btn btn-outline-dark ms-1 me-1">
       Registration Association
     </button>
