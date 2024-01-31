@@ -17,7 +17,7 @@
           {{ selectedAssociation ? selectedAssociation.name : 'Select an association' }}
         </button>
 
-        <button @click="$router.push('/association')" type="button" class="btn btn-outline-dark">Enter</button>
+        <button type="button" class="btn btn-outline-dark">Enter</button>
 
         <ul class="dropdown-menu">
           <li v-for="(association, index) in activeAssociations" :key="index">
@@ -49,6 +49,8 @@
 
 <script>
 
+import router from "@/router";
+
 export default {
   name: "AssociationEnterView",
   data() {
@@ -77,6 +79,7 @@ export default {
     selectAssociation(association) {
       this.selectedAssociation = association;
       sessionStorage.setItem('selectedAssociation', JSON.stringify(association));
+      // router.push('/association');
     },
 
   },

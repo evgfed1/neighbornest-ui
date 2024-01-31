@@ -64,7 +64,7 @@
       </div>
       <hr class="mt-2">
 
-      <div id="=app" class="container-fluid">
+      <div id="app" class="container-fluid">
         <router-view/>
       </div>
 
