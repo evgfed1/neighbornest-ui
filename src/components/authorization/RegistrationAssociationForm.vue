@@ -1,4 +1,5 @@
 <template>
+
   <div class="container">
     <div class="row justify-content-center">
       <div class="col col-4 justify-content-center">
@@ -82,7 +83,7 @@
             </div>
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 text-center">
           <button @keyup.enter="registerNewAssociation" @click="registerNewAssociation" type="submit"
                   class="btn btn-outline-dark">
             Register new association
