@@ -39,7 +39,7 @@
                              class="form-control"></vue-flatpickr>
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-4">
             <button @click="sendConsumptionRequest" type="button" class="btn btn-outline-dark">
               Show
             </button>
