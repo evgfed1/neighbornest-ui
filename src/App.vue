@@ -5,6 +5,8 @@
 
   <div class="container-fluid">
 
+
+
     <div class="row">
 
       <div class="col-12 text-center bg-dark text-white" style="height: 15px;"></div>
@@ -18,6 +20,9 @@
               <router-link to="/homepage">
                 <h3>NeighborNest</h3>
               </router-link>
+              <div>
+                <DateFormatter :date="someDate" />
+              </div>
               <div v-if="isLoggedIn">
                 <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
               </div>
@@ -92,11 +97,11 @@ import LogOutModal from "@/components/modal/LogOutModal.vue";
 import MainButtonsIsLoggedIn from "@/components/MainButtonsIsLoggedIn.vue";
 import MainButtonsIsLoggedOut from "@/components/MainButtonsIsLoggedOut.vue";
 import MainButtonsIsEnteredInCoop from "@/components/MainButtonsIsEnteredInCoop.vue";
-
+import DateFormatter from "@/components/date/DateFormatter.vue";
 export default {
   components: {
     MainButtonsIsEnteredInCoop,
-    MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal
+    MainButtonsIsLoggedIn, MainButtonsIsLoggedOut, LogOutModal, RegistrationModal, LoginModal, DateFormatter
   },
   data() {
     return {
@@ -105,6 +110,7 @@ export default {
       userId: 0,
       firstName: '',
       lastName: '',
+      someDate: new Date()
     }
   },
   methods: {
