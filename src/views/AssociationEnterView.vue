@@ -40,9 +40,9 @@
 
 
 <script>
-import RegistrationAssociationForm from "@/components/authorization/RegistrationAssociationForm.vue";
-import AssociationChoose from "@/components/authorization/AssociationChoose.vue";
-import AssociationEnterRequest from "@/components/authorization/AssociationEnterRequest.vue";
+import RegistrationAssociationForm from "@/components/association/RegistrationAssociationForm.vue";
+import AssociationChoose from "@/components/association/AssociationChoose.vue";
+import AssociationEnterRequest from "@/components/association/AssociationEnterRequest.vue";
 
 export default {
   name: "AssociationEnterView",
