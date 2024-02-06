@@ -52,7 +52,30 @@ export default {
 
     selectAssociation(association) {
       this.selectedAssociation = association;
+
       sessionStorage.setItem('selectedAssociation', JSON.stringify(association));
+
+      sessionStorage.setItem('associationId', association.associationId)
+      sessionStorage.setItem('associationName', association.associationName)
+      sessionStorage.setItem('associationStatus', association.associationStatus)
+      sessionStorage.setItem('residentId', association.residentId)
+      sessionStorage.setItem('residentUserId', association.residentUserId)
+      sessionStorage.setItem('residentUserRoleId', association.residentUserRoleId)
+      sessionStorage.setItem('residentUserRoleName', association.residentUserRoleName)
+      sessionStorage.setItem('residentStatus', association.residentStatus)
+      sessionStorage.setItem('roleId', association.roleId)
+      sessionStorage.setItem('roleName', association.roleName)
+      
+      // sessionStorage.setItem('associationId', this.activeUserAssociations.associationId)
+      // sessionStorage.setItem('associationName', this.activeUserAssociations.associationName)
+      // sessionStorage.setItem('associationStatus', this.activeUserAssociations.associationStatus)
+      // sessionStorage.setItem('residentId', this.activeUserAssociations.residentId)
+      // sessionStorage.setItem('residentUserId', this.activeUserAssociations.residentUserId)
+      // sessionStorage.setItem('residentUserRoleId', this.activeUserAssociations.residentUserRoleId)
+      // sessionStorage.setItem('residentUserRoleName', this.activeUserAssociations.residentUserRoleName)
+      // sessionStorage.setItem('residentStatus', this.activeUserAssociations.residentStatus)
+      // sessionStorage.setItem('roleId', this.activeUserAssociations.roleId)
+      // sessionStorage.setItem('roleName', this.activeUserAssociations.roleName)
     },
 
     getActiveAssociations() {
@@ -64,23 +87,14 @@ export default {
       ).then(response => {
         console.log('To chto prishlo s backend: ' + response.data)
         this.activeUserAssociations = response.data;
-        sessionStorage.setItem('userId', this.loginResponse.userId)
-        sessionStorage.setItem('associationId', this.activeUserAssociations.associationId)
-        sessionStorage.setItem('associationName', this.activeUserAssociations.associationName)
-        sessionStorage.setItem('associationStatus', this.activeUserAssociations.associationStatus)
-        sessionStorage.setItem('residentId', this.activeUserAssociations.residentId)
-        sessionStorage.setItem('residentUserId', this.activeUserAssociations.residentUserId)
-        sessionStorage.setItem('residentUserRoleId', this.activeUserAssociations.residentUserRoleId)
-        sessionStorage.setItem('residentUserRoleName', this.activeUserAssociations.residentUserRoleName)
-        sessionStorage.setItem('residentStatus', this.activeUserAssociations.residentStatus)
-        sessionStorage.setItem('roleId', this.activeUserAssociations.roleId)
-        sessionStorage.setItem('roleName', this.activeUserAssociations.roleName)
+
         console.log('All assoc: ' + this.activeAssociations)
         console.log('User assoc: ' + this.activeUserAssociations)
       }).catch(error => {
         console.error('Error fetching active associations:', error);
       });
     },
+
   },
   mounted() {
     this.getActiveAssociations()
