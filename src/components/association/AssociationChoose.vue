@@ -13,7 +13,7 @@
 
         <ul class="dropdown-menu">
           <li v-for="(association, index) in activeUserAssociations" :key="index">
-            <a @click="selectAssociation(association)" class="dropdown-item" href="#"> {{ this.activeUserAssociations.associationName }} </a>
+            <a @click="selectAssociation(association)" class="dropdown-item" href="#"> {{ association.associationName }} </a>
           </li>
         </ul>
       </div>
@@ -63,7 +63,7 @@ export default {
           }
       ).then(response => {
         console.log('To chto prishlo s backend: ' + response.data)
-        this.activeAssociations = response.data;
+        this.activeUserAssociations = response.data;
         sessionStorage.setItem('userId', this.loginResponse.userId)
         sessionStorage.setItem('associationId', this.activeUserAssociations.associationId)
         sessionStorage.setItem('associationName', this.activeUserAssociations.associationName)
@@ -78,8 +78,8 @@ export default {
         console.log('All assoc: ' + this.activeAssociations)
         console.log('User assoc: ' + this.activeUserAssociations)
       }).catch(error => {
-            console.error('Error fetching active associations:', error);
-          });
+        console.error('Error fetching active associations:', error);
+      });
     },
   },
   mounted() {
