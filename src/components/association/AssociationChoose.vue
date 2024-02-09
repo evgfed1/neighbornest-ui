@@ -9,11 +9,14 @@
           {{ selectedAssociation ? selectedAssociation.associationName : 'Select an association' }}
         </button>
 
-        <button @click="$router.push('/association')" type="button" class="btn btn-outline-dark">Enter</button>
+        <button @click="setValuesToSessionStorage" type="button" class="btn btn-outline-dark">Enter</button>
+        <!--        <button @click="$router.push('/association')" type="button" class="btn btn-outline-dark">Enter</button>-->
 
         <ul class="dropdown-menu">
           <li v-for="(association, index) in activeUserAssociations" :key="index">
-            <a @click="selectAssociation(association)" class="dropdown-item" href="#"> {{ association.associationName }} </a>
+            <a @click="selectAssociation(association)" class="dropdown-item" href="#"> {{
+                association.associationName
+              }} </a>
           </li>
         </ul>
       </div>
@@ -43,27 +46,34 @@ export default {
           residentUserRoleName: '',
           residentStatus: '',
           roleId: null,
-          roleName: ''
+          roleName: sessionStorage.getItem('roleName'),
         }
       ],
     }
   },
   methods: {
 
+    setValuesToSessionStorage() {
+
+      this.activeUserAssociations.roleName = sessionStorage.getItem('roleName')
+      alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
+
+    },
+
     selectAssociation(association) {
       this.selectedAssociation = association;
       sessionStorage.setItem('selectedAssociation', JSON.stringify(association));
+
       sessionStorage.setItem('associationId', association.associationId)
       sessionStorage.setItem('associationName', association.associationName)
       sessionStorage.setItem('associationStatus', association.associationStatus)
       sessionStorage.setItem('residentId', association.residentId)
       sessionStorage.setItem('residentUserId', association.residentUserId)
       sessionStorage.setItem('residentUserRoleId', association.residentUserRoleId)
-      sessionStorage.setItem('residentUserRoleName', association.residentUserRoleName)
+      sessionStorage.setItem('residentUserRoleName', association.residentUserRoleName)   // admin - user
       sessionStorage.setItem('residentStatus', association.residentStatus)
       sessionStorage.setItem('roleId', association.roleId)
-      sessionStorage.setItem('roleName', association.roleName)
-
+      sessionStorage.setItem('roleName', association.roleName)  // moderator - owner - tenant
     },
 
     getActiveAssociations() {
