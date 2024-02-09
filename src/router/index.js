@@ -22,11 +22,6 @@ const routes = [
         component: ErrorView
     },
     {
-        path: '/registration',
-        name: 'registrationRoute',
-        component: RegistrationAssociationView
-    },
-    {
         path: '/consumption',
         name: 'consumptionRoute',
         component: ConsumptionView
