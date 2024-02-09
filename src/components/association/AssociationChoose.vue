@@ -73,6 +73,7 @@ export default {
     selectAssociation(association) {
       this.selectedAssociation = association;
       sessionStorage.setItem('selectedAssociation', JSON.stringify(association));
+      alert(this.selectedAssociation)
     },
 
     // getActiveAssociations() {
