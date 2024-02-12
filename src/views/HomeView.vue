@@ -1,11 +1,17 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-4">
-
+    <div class="row justify-content-center">
+      <div class="row justify-content-center">
+        <HomeViewTestComponent
+            :value1="value1"
+            :value2="value2"
+            :value3="value3"
+            :value4="value4"
+            :value5="value5"/>
       </div>
       <div class="col-4 text-center">
+        <p class="form-control">{{HomeViewTestComponent2.data().TextVnuk}}</p>
+
         <br>
         <br>
         <br>
@@ -19,23 +25,37 @@
         <br>
         <br>
       </div>
-
-      <div class="col-4">
-
-      </div>
-
     </div>
-
-
   </div>
 </template>
 
 <script>
+import HomeViewTestComponent from "@/components/HomeViewTestComponent.vue";
+import homeViewTestComponent2 from "../components/HomeViewTestComponent2.vue";
+import HomeViewTestComponent2 from "../components/HomeViewTestComponent2.vue";
+
 export default {
   name: "HomeView",
-
+  computed: {
+    HomeViewTestComponent2() {
+      return HomeViewTestComponent2
+    },
+    homeViewTestComponent2() {
+      return homeViewTestComponent2
+    }
+  },
+  components: {HomeViewTestComponent},
   data() {
-    return {}
+    return {
+      value1: 5,
+      value2: false,
+      value3: 'Jupako',
+      value4: false,
+      value5: 6,
+      value6: false,
+      value7: 'NeighborNest',
+      value8: false,
+    }
   },
 }
 </script>

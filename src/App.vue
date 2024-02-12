@@ -1,5 +1,5 @@
 <template>
-  <UpperMenuBar />
+  <UpperMenuBar/>
   <div id="app" class="container-fluid">
     <router-view/>
   </div>
