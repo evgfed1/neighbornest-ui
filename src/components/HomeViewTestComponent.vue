@@ -5,6 +5,7 @@
       <p v-if="value5 === 6">Son. Value 5 = 6</p>
       <HomeViewTestComponent2
           :value5="value5"
+          @updateTextVnuk="handleInput"
       />
     </div>
   </div>
@@ -26,8 +27,14 @@ export default {
   data() {
     return {
       testComponentValue: true,
+      textVnuk: ''
     }
   },
+  methods: {
+    handleInput(textVnuk) {
+      this.$emit('updateTextVnuk', textVnuk);
+    },
+  }
 }
 </script>
 
