@@ -1,6 +1,7 @@
 <template>
   <UpperMenuBar
-  :
+  :isLoggedIn="isLoggedIn"
+  :isEnteredInCoop="isEnteredInCoop"
   />
   <div id="app" class="container-fluid">
     <router-view/>
@@ -17,10 +18,15 @@ export default {
 
   data() {
     return {
-      isLoggedIn: Boolean,
-      isEnteredInCoop: Boolean,
+      isLoggedIn: false,
+      isEnteredInCoop: false,
     }
   },
+  methods: {
+    updateLoginStatus(isLoggedIn) {
+      this.isLoggedIn = isLoggedIn
+    }
+  }
 
 }
 

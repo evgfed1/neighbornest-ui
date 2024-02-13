@@ -130,6 +130,7 @@ export default {
         this.isLoggedIn = true;
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
+        this.$emit('update-login-status', this.isLoggedIn)
         router.push('/homepage')
       }
     },
