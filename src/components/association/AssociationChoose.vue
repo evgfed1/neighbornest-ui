@@ -27,6 +27,9 @@
 
 
 <script>
+
+import router from "@/router";
+
 export default {
   name: "AssociationChoose",
 
@@ -57,7 +60,7 @@ export default {
 
       this.activeUserAssociations.roleName = sessionStorage.getItem('roleName')
       alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
-
+      router.push('/association')
     },
 
     selectAssociation(association) {
