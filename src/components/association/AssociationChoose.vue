@@ -10,7 +10,6 @@
         </button>
 
         <button @click="setValuesToSessionStorage" type="button" class="btn btn-outline-dark">Enter</button>
-        <!--        <button @click="$router.push('/association')" type="button" class="btn btn-outline-dark">Enter</button>-->
 
         <ul class="dropdown-menu">
           <li v-for="(association, index) in activeUserAssociations" :key="index">
@@ -27,6 +26,8 @@
 
 
 <script>
+import router from "@/router";
+
 export default {
   name: "AssociationChoose",
 
@@ -57,6 +58,8 @@ export default {
 
       this.activeUserAssociations.roleName = sessionStorage.getItem('roleName')
       alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
+      router.push('/association')
+
 
     },
 
