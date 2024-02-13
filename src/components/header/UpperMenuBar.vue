@@ -143,6 +143,7 @@ export default {
       sessionStorage.clear();
       const userId = sessionStorage.getItem('userId');
       this.isLoggedIn = userId !== null;
+      this.$emit('update-login-status', this.isLoggedIn)
       router.push('/')
     },
 
@@ -152,6 +153,8 @@ export default {
         this.isLoggedIn = true;
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
+        this.$emit('update-login-status', this.isLoggedIn)
+
       }
     },
 

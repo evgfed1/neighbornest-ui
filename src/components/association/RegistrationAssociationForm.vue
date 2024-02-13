@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col col-4 justify-content-center">
         <div class=" d-flex align-items-center justify-content-center mb-4">
-          <h3>Registration Association Form</h3>
+          <h5>Please fill the fields below</h5>
         </div>
         <div>
           <SuccessAlert v-if="registrationSuccess" :success-message="successMessage"/>

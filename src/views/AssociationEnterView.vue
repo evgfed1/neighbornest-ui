@@ -5,7 +5,9 @@
 <div v-if="!showRegistrationForm" class="container-fluid">
 <div class="row justify-content-center">
   <div class="col-4">
-    <AssociationChoose/>
+    <AssociationChoose
+    @updateCoopStatus="methodCoop"
+    />
   </div>
 </div>
 </div>
@@ -43,6 +45,8 @@
 import RegistrationAssociationForm from "@/components/association/RegistrationAssociationForm.vue";
 import AssociationChoose from "@/components/association/AssociationChoose.vue";
 import AssociationEnterRequest from "@/components/association/AssociationEnterRequest.vue";
+import app from "@/App.vue";
+import homeView from "@/views/HomeView.vue";
 
 export default {
   name: "AssociationEnterView",
@@ -50,8 +54,17 @@ export default {
   data() {
     return {
       showRegistrationForm: false,
-      isEnteredInCoop: sessionStorage.getItem('isEnteredInCoop'),
+      isEnteredInCoop: false,
       isLoggedIn: sessionStorage.getItem('isLoggedIn')
+    }
+  },
+  methods: {
+    methodCoop(isEnteredInCoop) {
+      // this.$emit('updateCoopStatus', isEnteredInCoop)
+      // this.isEnteredInCoop = isEnteredInCoop
+      // app.data().isEnteredInCoop = isEnteredInCoop
+      this.$set.app.data().isEnteredInCoop = isEnteredInCoop
+      app.methods.alert()
     }
   }
 }

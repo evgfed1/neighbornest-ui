@@ -27,6 +27,7 @@
 
 <script>
 import router from "@/router";
+import app from "@/App.vue";
 
 export default {
   name: "AssociationChoose",
@@ -34,6 +35,7 @@ export default {
   data() {
     return {
       userId: sessionStorage.getItem('userId'),
+      isEnteredInCoop: false,  //zadatj true posle vhoda v coop
       selectedAssociation: null,
       activeAssociations: [],
       activeUserAssociations: [
@@ -57,9 +59,18 @@ export default {
     setValuesToSessionStorage() {
 
       this.activeUserAssociations.roleName = sessionStorage.getItem('roleName')
-      alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
+      // alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
+      alert('AssocChoose.isEnteredInCoop = ' + this.isEnteredInCoop)
+      this.isEnteredInCoop = true
+      this.changeCoopStatus()
+      alert('AssocChoose.isEnteredInCoop = ' + this.isEnteredInCoop)
       router.push('/association')
 
+    },
+
+    changeCoopStatus() {
+      alert('peredaem isEnteredInCoop vverh iz AssocChoose v AssocEnterView')
+      this.$emit('updateCoopStatus', this.isEnteredInCoop)
 
     },
 
