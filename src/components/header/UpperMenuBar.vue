@@ -6,7 +6,6 @@
   <div class="container-fluid">
 
 
-
     <div class="row">
 
       <div class="col-12 text-center bg-dark text-white" style="height: 15px;"></div>
@@ -20,8 +19,11 @@
               <router-link to="/homepage">
                 <h3>NeighborNest</h3>
               </router-link>
+              <router-link to="/testing">
+                <h3>Testing</h3>
+              </router-link>
               <div>
-                <DateFormatter :date="someDate" />
+                <DateFormatter :date="someDate"/>
               </div>
               <div v-if="isLoggedIn">
                 <h4 class="mt-3">{{ firstName }} {{ lastName }}</h4>
