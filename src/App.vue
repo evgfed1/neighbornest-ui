@@ -1,8 +1,8 @@
 <template>
   <UpperMenuBarTest/>
   <!--  <UpperMenuBar/>-->
-<!--  <div id="app" v-if="$store.state.isLoggedIn">-->
-  <div id="app">
+  <div id="app" v-if="$store.state.isLoggedIn">
+<!--  <div id="app">-->
     <router-view/>
   </div>
   <div class="container-fluid" v-if="!$store.state.isLoggedIn">

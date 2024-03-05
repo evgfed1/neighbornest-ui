@@ -12,6 +12,16 @@ import AssociationView from "@/views/AssociationView.vue";
 import AssociationEnterView from "@/views/AssociationEnterView.vue";
 import TestingView from "@/views/TestingView.vue";
 
+// const guardMyPage = (to, from, next) => {
+//     if ($store.state.isFeatureEnabled) {
+//         // Пользователь видит страницу, если переменная в хранилище имеет определенное значение
+//         next();
+//     } else {
+//         // Возможно, перенаправление на другую страницу или отображение предупреждения
+//         next('/disabled-page');
+//     }
+// };
+
 const routes = [
     {
         path: '/homepage',
