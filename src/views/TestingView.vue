@@ -3,8 +3,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="text-center">
-        <h3 :style="{ color: test ? 'blue' : 'black' }">Value: </h3>
-        <button @click="changeTestStat">test {{test}}</button>
+        <h3 :style="{ color: $store.state.comp2 ? 'blue' : 'black' }">Value: </h3>
+        <button @click="$store.commit('changeTestStat')">test {{test}}</button>
         <br>
         <br>
       </div>
@@ -43,7 +43,14 @@ export default {
   },
   methods: {
     changeTestStat() {
-      this.test = !this.test
+      if ($store.state.comp2 === true) {
+        alert("comp2 = true" + $store.state.comp2)
+      }else {
+        alert("comp2 = false" + $store.state.comp2)
+
+      }
+      // $store.state.comp2
+      // this.test = !this.test
     },
     // Метод для обработки обновленного статуса comp1 из TestComp1
     updateComp1Status(comp1Status) {

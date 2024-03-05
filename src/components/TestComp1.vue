@@ -1,11 +1,12 @@
 <template>
   <div class="row justify-content-center">
     <div>
-      <h4 :style="{ color: comp1 ? 'green' : 'black' }">Component 1</h4>
-      <p :style="{ color: comp1 ? 'green' : 'black' }" v-if="comp1 === true">comp1 = true</p>
-      <p v-if="comp1 === false">comp1 = false</p>
-      <button @click="changeComp1Stat">comp2 {{comp1}}</button>
+      <h4 :style="{ color: $store.state.comp1 ? 'green' : 'black' }">Component 1</h4>
+      <p :style="{ color: $store.state.comp1 ? 'green' : 'black' }" v-if="$store.state.comp1 === true">comp1 = true</p>
+      <p v-if="$store.state.comp1 === false">comp1 = false</p>
+      <button @click="$store.commit('changeComp1Stat')">comp1 {{$store.state.comp1}}</button>
 
+      <button @click="buttonComp1">Hello {{this.comp1}}</button>
       <TestComp2 @comp2-status-updated="updateComp2Status"/>  <!--added-->
 
     </div>
@@ -24,18 +25,14 @@ export default {
   },
   data() {
     return {
-      // testComponent1Value: true,
-      comp1: false,
+      comp1: true,
     }
   },
-  methods: {
-    changeComp1Stat() {
-      this.comp1 = !this.comp1
-      this.$emit("comp1-status-updated", !this.comp1);
-    },
-    updateComp2Status(comp2Status) {   //added
-      this.$emit("comp2-status-updated", comp2Status);
-    },
-  }
+methods: {
+  buttonComp1() {
+    this.comp1 = !this.comp1
+  },
+
+},
 }
 </script>
