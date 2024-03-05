@@ -6,6 +6,7 @@ export default createStore({
         comp2: true,
         testComponent2Value: true,
         isLoggedIn: false,
+        isEnteredInCoop: false,
     },
     mutations: {
         changeComp2Stat(state) {
@@ -31,6 +32,17 @@ export default createStore({
             console.log("isLoggedin: " + state.isLoggedIn)
             alert("vuex loggedIn = " + state.isLoggedIn)
         },
+        setTrueIsEnteredInCoop(state) {
+            state.isEnteredInCoop = true
+            console.log("isEnteredInCoop: " + state.isEnteredInCoop)
+            alert("vuex enteredCOOP = " + state.isEnteredInCoop)
+        },
+        setFalseIsEnteredInCoop(state) {
+            state.isEnteredInCoop = false
+            console.log("isEnteredInCoop: " + state.isEnteredInCoop)
+            alert("vuex enteredCOOP = " + state.isEnteredInCoop)
+        },
+
 
     },
     actions: {},

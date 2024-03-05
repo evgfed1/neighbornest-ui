@@ -33,8 +33,8 @@
 
           <div class="col-4 container-fluid text-center">
             <MainButtonsIsLoggedOut v-if="!$store.state.isLoggedIn"/>
-            <MainButtonsIsLoggedIn v-if="$store.state.isLoggedIn && !isEnteredInCoop"/>
-            <MainButtonsIsEnteredInCoop v-if="$store.state.isLoggedIn && isEnteredInCoop"/>
+            <MainButtonsIsLoggedIn v-if="$store.state.isLoggedIn && !$store.state.isEnteredInCoop"/>
+            <MainButtonsIsEnteredInCoop v-if="$store.state.isLoggedIn && $store.state.isEnteredInCoop"/>
           </div>
 
           <div class="col-4 text-end">
@@ -57,8 +57,7 @@
                 Menu 1
               </div>
               <div class="col-4 text-center">
-                Menu 2
-                {{$store.state.isLoggedIn}}
+                isLoggedIn= {{$store.state.isLoggedIn}} <br> isEnteredInCoop= {{$store.state.isEnteredInCoop}}
               </div>
               <div class="col-4 text-end">
                 Menu 3
@@ -104,7 +103,7 @@ export default {
   },
   data() {
     return {
-      isEnteredInCoop: false,
+      isEnteredInCoopLocal: false,
       isLoggedInLocal: false,
       userId: 0,
       firstName: '',
@@ -141,6 +140,7 @@ export default {
       sessionStorage.clear();
       const userId = sessionStorage.getItem('userId');
       if (userId == null) {
+        this.$store.commit('setFalseIsEnteredInCoop');
         this.$store.commit('setFalseIsLoggedIn');
       }
       router.push('/')
@@ -157,8 +157,8 @@ export default {
     },
 
     changeStatusForCoop() {
-      this.isEnteredInCoop = !this.isEnteredInCoop;
-      alert("isEnteredInCoop: " + this.isEnteredInCoop)
+      this.isEnteredInCoopLocal = !this.isEnteredInCoopLocal;
+      alert("isEnteredInCoop: " + this.isEnteredInCoopLocal)
     }
   }
 }

@@ -60,6 +60,7 @@ export default {
 
       this.activeUserAssociations.roleName = sessionStorage.getItem('roleName')
       alert('activeUserAssociations.roleName: ' + this.activeUserAssociations.roleName)
+      this.$store.commit('setTrueIsEnteredInCoop')
       router.push('/association')
     },
 
@@ -99,13 +100,7 @@ export default {
   },
   mounted() {
     this.getActiveAssociations()
-
-    // const storedAssociation = sessionStorage.getItem('selectedAssociation');
-    // if (storedAssociation) {
-    //   this.selectedAssociation = JSON.parse(storedAssociation);
-    // }
   }
-
 }
 </script>
 

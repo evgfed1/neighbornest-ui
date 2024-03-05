@@ -49,10 +49,11 @@ export default {
   components: {RegistrationAssociationForm, AssociationChoose, AssociationEnterRequest},
   data() {
     return {
-      showRegistrationForm: false,
-      isEnteredInCoop: sessionStorage.getItem('isEnteredInCoop'),
-      isLoggedIn: sessionStorage.getItem('isLoggedIn')
+      showRegistrationForm: false
     }
+  },
+  methods: {
+
   }
 }
 </script>
