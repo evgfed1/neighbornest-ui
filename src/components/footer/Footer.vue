@@ -23,6 +23,7 @@ export default {
   padding: 10px;
   text-align: center;
   width: 100%; /* Растягиваем по всей ширине экрана */
+  margin-top: 50px;
 }
 
 .footer-content {

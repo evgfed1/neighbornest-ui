@@ -95,7 +95,7 @@ import router from "@/router";
 export default {
   name: "UpperMenuBar",
   props: {
-    isLoggedIn: Boolean,
+    // isLoggedIn: Boolean,
   },
   components: {
     MainButtonsIsLoggedIn,
@@ -130,6 +130,7 @@ export default {
       this.userId = parseInt(sessionStorage.getItem('userId'));
       if (this.userId > 0) {
         this.isLoggedIn = true;
+        this.storeMethod()
         this.firstName = String(sessionStorage.getItem("firstName"))
         this.lastName = String(sessionStorage.getItem("lastName"))
         router.push('/homepage')
@@ -138,6 +139,9 @@ export default {
 
     openLogoutModal() {
       this.$refs.logOutModal.$refs.modalRef.openModal()
+    },
+    storeMethod() {
+      this.$store.commit('testMethod')
     },
 
     handleLogout() {
